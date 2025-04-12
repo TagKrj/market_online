@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8BEE6EF7-CC45-4B61-A5DC-8E7FFF34C60D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LapStore</RootNamespace>
+    <AssemblyName>LapStore</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>C:\Users\asus\source\repos\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.7\lib\net48\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\ChiTietDonHangController.cs" />
+    <Compile Include="Controller\DonHangController.cs" />
+    <Compile Include="Controller\GioHangController.cs" />
+    <Compile Include="Controller\SanPhamController.cs" />
+    <Compile Include="Controller\ThongKeController.cs" />
+    <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="Model\ChiTietDonHang.cs" />
+    <Compile Include="Model\DonHang.cs" />
+    <Compile Include="Model\GioHang.cs" />
+    <Compile Include="Model\ThongKe.cs" />
+    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="View\AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SanPham.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuangCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\QuangCao.Designer.cs">
+      <DependentUpon>QuangCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\danhMucUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\danhMucUserControl.Designer.cs">
+      <DependentUpon>danhMucUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\donHangAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\donHangAdmin.Designer.cs">
+      <DependentUpon>donHangAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\khoHangUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\khoHangUserControl.Designer.cs">
+      <DependentUpon>khoHangUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\nhaCungCapUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\nhaCungCapUserControl.Designer.cs">
+      <DependentUpon>nhaCungCapUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\User\donHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\User\donHang.Designer.cs">
+      <DependentUpon>donHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\User\gioHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\User\gioHang.Designer.cs">
+      <DependentUpon>gioHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\User\danhMuc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\User\danhMuc.Designer.cs">
+      <DependentUpon>danhMuc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\User\detailSanPham.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\User\detailSanPham.Designer.cs">
+      <DependentUpon>detailSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\User\itemSanPham.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\User\itemSanPham.Designer.cs">
+      <DependentUpon>itemSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\sanPhamUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\sanPhamUserControl.Designer.cs">
+      <DependentUpon>sanPhamUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\doanhthuThoiGianUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\doanhthuThoiGianUserControl.Designer.cs">
+      <DependentUpon>doanhthuThoiGianUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\khachHangUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\khachHangUserControl.Designer.cs">
+      <DependentUpon>khachHangUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\lichSuKhachHangUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\lichSuKhachHangUserControl.Designer.cs">
+      <DependentUpon>lichSuKhachHangUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\khuyenMaiUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\khuyenMaiUserControl.Designer.cs">
+      <DependentUpon>khuyenMaiUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\doanhThuNhomHangUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\doanhThuNhomHangUserControl.Designer.cs">
+      <DependentUpon>doanhThuNhomHangUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\thongKeUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\thongKeUserControl.Designer.cs">
+      <DependentUpon>thongKeUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\User\itemSPGioHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\User\itemSPGioHang.Designer.cs">
+      <DependentUpon>itemSPGioHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\User\profileUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\User\profileUser.Designer.cs">
+      <DependentUpon>profileUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\User\thanhToan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\User\thanhToan.Designer.cs">
+      <DependentUpon>thanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\User\timKiemSanPham.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\User\timKiemSanPham.Designer.cs">
+      <DependentUpon>timKiemSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\User\trangChuUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\User\trangChuUser.Designer.cs">
+      <DependentUpon>trangChuUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\nhanVienUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\nhanVienUserControl.Designer.cs">
+      <DependentUpon>nhanVienUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Admin\doanhThuLaiLoUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\Admin\doanhThuLaiLoUserControl.Designer.cs">
+      <DependentUpon>doanhThuLaiLoUserControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QuangCao.resx">
+      <DependentUpon>QuangCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\danhMucUserControl.resx">
+      <DependentUpon>danhMucUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\donHangAdmin.resx">
+      <DependentUpon>donHangAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\khoHangUserControl.resx">
+      <DependentUpon>khoHangUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\nhaCungCapUserControl.resx">
+      <DependentUpon>nhaCungCapUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\User\donHang.resx">
+      <DependentUpon>donHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\User\gioHang.resx">
+      <DependentUpon>gioHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\User\danhMuc.resx">
+      <DependentUpon>danhMuc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\User\detailSanPham.resx">
+      <DependentUpon>detailSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\User\itemSanPham.resx">
+      <DependentUpon>itemSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\sanPhamUserControl.resx">
+      <DependentUpon>sanPhamUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\doanhthuThoiGianUserControl.resx">
+      <DependentUpon>doanhthuThoiGianUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\khachHangUserControl.resx">
+      <DependentUpon>khachHangUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\lichSuKhachHangUserControl.resx">
+      <DependentUpon>lichSuKhachHangUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\khuyenMaiUserControl.resx">
+      <DependentUpon>khuyenMaiUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\doanhThuNhomHangUserControl.resx">
+      <DependentUpon>doanhThuNhomHangUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\thongKeUserControl.resx">
+      <DependentUpon>thongKeUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\User\itemSPGioHang.resx">
+      <DependentUpon>itemSPGioHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\User\profileUser.resx">
+      <DependentUpon>profileUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\User\thanhToan.resx">
+      <DependentUpon>thanhToan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\User\timKiemSanPham.resx">
+      <DependentUpon>timKiemSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\User\trangChuUser.resx">
+      <DependentUpon>trangChuUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\nhanVienUserControl.resx">
+      <DependentUpon>nhanVienUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\Admin\doanhThuLaiLoUserControl.resx">
+      <DependentUpon>doanhThuLaiLoUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\daz.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-laptop-242.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-screen-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-pc-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-keyboard-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-computer-mouse-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-headphones-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ssd-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-portable-speaker-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-webcam-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-32 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aaaaa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favicon-hacom-2024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-sign-out-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-playstation-portable-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-microphone-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-analytics-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-pencil-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-pencil-32den.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-image-symbol-missing-available-icon-gallery-vector-45703245.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-menu-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-shopping-cart-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-32black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-sign-out-32black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-shopping-cart-32black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-find-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-shopping-cart-32mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-done-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-03-19 235121.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\07_Febaf33f489136d42d1299f8589de8eed44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\07_Feb5dbefdcf6be0f3ba088f4fc3f7122629.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-03-19 2351211.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arrow2-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arrow-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-left-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-03-27 010741.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-03-27 011304.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-03-27 010912.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-home-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-minus-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-favorite-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-nofavorite-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\false.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-favorite22-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-pencil-32den1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-password-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arrowR-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\07_Febaf33f489136d42d1299f8589de8eed441.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\07_Feb5dbefdcf6be0f3ba088f4fc3f71226291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cfd9ea48816e6cb204157adc4c28ab1b.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arrow-32r2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-load.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ellipsis%401x-1.0s-200px-200px.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cat Vibing Sticker.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cat Pixel Sticker.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tenor.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dog Spinning Sticker.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\21.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\22.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\qq.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-03-29 191332.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-visibility-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-hide-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-visibility-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Magnify%401x-1.0s-200px-200px.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kha-banh-mua-quat-VEED.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kha-banh-mua-quat1-VEED.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kha-banh-mua-quat-VEED11.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0106_DSCF7884.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\486760526_1035775685083470_1340345819902764889_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dark dancing Sticker by 88rising.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delivery-truck-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-07 180136.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arrow-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arrow-322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-reply-arrow-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-reply-arrow-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z5944219984636_c3568a0d50cc767d74e6ea88a0d544da.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z5944227486683_50f1031d95748796373b4319d136d0ba.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-07 214625.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delivery-truck-3222.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-upload-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-image-symbol-missing-available-icon-gallery-vector-457032451.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
