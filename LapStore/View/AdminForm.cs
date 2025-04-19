@@ -131,7 +131,7 @@ namespace LapStore
 
         private void btn_KhuyenMai_Click(object sender, EventArgs e)
         {
-            khuyenMaiUserControl uc = new khuyenMaiUserControl();
+            GiamGiaUserControl uc = new GiamGiaUserControl();
             AddUserControl(uc);
         }
 

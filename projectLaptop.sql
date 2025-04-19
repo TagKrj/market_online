@@ -29,7 +29,10 @@ CREATE TABLE SANPHAM (
     moTa NVARCHAR(MAX),
     giaNhap BIGINT,
     giaBan BIGINT,
+	giaThat BIGINT,
     soLuong INT,
+	maGiamGia char(10),
+	maNhaCungCap char(10),
     created_at DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (maDm) REFERENCES DANHMUC(id),
     CHECK (giaNhap < giaBan)
@@ -80,7 +83,17 @@ CREATE TABLE THONGKE (
     FOREIGN KEY (maDonHang) REFERENCES DONHANG(id),
     FOREIGN KEY (maSp) REFERENCES SANPHAM(maSp)
 );
+create table GIAMGIA(
+	maGiamGia CHAR(10) PRIMARY KEY,
+	tenGiamGia NVARCHAR(255),
+	soGiamGia int,
+);
 
+create table NHACUNGCAP(
+	maNhaCungCap char(10) PRIMARY KEY,
+	tenNhaCungCap NVARCHAR(255),
+	diaChi NVARCHAR(255)
+);
 INSERT INTO DANHMUC(id, tenDanhMuc)
 VALUES 
     ('DM001', N'LapTop'),

@@ -247,7 +247,7 @@
             this.txtMoTa.PlaceholderText = "Nhập mô tả...";
             this.txtMoTa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtMoTa.SelectedText = "";
-            this.txtMoTa.Size = new System.Drawing.Size(226, 62);
+            this.txtMoTa.Size = new System.Drawing.Size(226, 74);
             this.txtMoTa.TabIndex = 21;
             // 
             // txtGiaNhap

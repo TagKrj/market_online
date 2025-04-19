@@ -17,11 +17,12 @@ namespace LapStore.Widget
     public partial class nhanVienUserControl : System.Windows.Forms.UserControl
     {
         string imagePath;
+
         public nhanVienUserControl()
         {
             InitializeComponent();
-           
         }
+
         private void ClearForm()
         {
             txtId.Clear();
@@ -39,16 +40,15 @@ namespace LapStore.Widget
         private void LoadComboBoxRole()
         {
             Dictionary<int, string> roles = new Dictionary<int, string>
-    {
-        { 1, "USER" },  // USER = 1
-        { 0, "ADMIN" }  // ADMIN = 0
-    };
+            {
+                { 1, "USER" }, // USER = 1
+                { 0, "ADMIN" } // ADMIN = 0
+            };
 
             cbb_role.DataSource = new BindingSource(roles, null);
             cbb_role.DisplayMember = "Value"; // Hiển thị "USER" hoặc "ADMIN"
             cbb_role.ValueMember = "Key"; // Giá trị thực tế 1 hoặc 0
         }
-
 
 
         public void LoadingData()
@@ -77,14 +77,13 @@ namespace LapStore.Widget
 
                 // Thêm hàng mới vào DataGridView
                 int rowIndex = dgvUser.Rows.Add(
-                    img,             // Hình ảnh
-                    user.Id,         // ID người dùng
-                    user.HoTen,      // Họ tên
-                    user.Email,      // Email
+                    img, // Hình ảnh
+                    user.Id, // ID người dùng
+                    user.HoTen, // Họ tên
+                    user.Email, // Email
                     user.Pass,
                     user.Sdt,
-                    user.DiaChi,     // Địa chỉ
-
+                    user.DiaChi, // Địa chỉ
                     user.Check ? "USER" : "ADMIN" // Phân quyền (Check = 1 là USER, 0 là ADMIN)
                 );
 
@@ -93,13 +92,16 @@ namespace LapStore.Widget
             }
         }
 
-      
+
         private void userUserControl_Load(object sender, EventArgs e)
         {
             LoadingData();
             LoadComboBoxRole();
+            cbb_role.SelectedValue = 0;
+            cbb_role.Enabled = false;
             // dgvUser.DefaultCellStyle.ForeColor = Color.Black;
         }
+
         private void dgvUser_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -127,6 +129,7 @@ namespace LapStore.Widget
                             imageSp.Image = new Bitmap(bmpTemp);
                             imageSp.Tag = imagePath;
                         }
+
                         imageSp.BackColor = Color.Transparent; // Không có màu nền khi có ảnh
                     }
                     else
@@ -175,21 +178,19 @@ namespace LapStore.Widget
 
                 // Thêm hàng mới vào DataGridView
                 int rowIndex = dgvUser.Rows.Add(
-                    img,             // Hình ảnh
-                    user.Id,         // ID người dùng
-                    user.HoTen,      // Họ tên
-                    user.Email,      // Email
+                    img, // Hình ảnh
+                    user.Id, // ID người dùng
+                    user.HoTen, // Họ tên
+                    user.Email, // Email
                     user.Pass,
                     user.Sdt,
-                    user.DiaChi,     // Địa chỉ
-
+                    user.DiaChi, // Địa chỉ
                     user.Check ? "USER" : "ADMIN" // Phân quyền (Check = 1 là USER, 0 là ADMIN)
                 );
 
                 // Lưu đường dẫn ảnh vào thuộc tính Tag
                 dgvUser.Rows[rowIndex].Cells["HinhAnh"].Tag = user.HinhAnh;
             }
-
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -222,17 +223,16 @@ namespace LapStore.Widget
             // Gọi hàm thêm user
             UserController.AddUser(user);
             LoadingData(); // Load lại danh sách user
-            MessageBox.Show("Thêm người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Thêm người dùng thành công!", "Thông báo", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
             ClearForm(); // Xóa nội dung trên form sau khi thêm thành công
-
-
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             // Sử dụng hàm kiểm tra từ lớp Database
             if (!Database.CheckNull(txtId.Text) ||
-                !Database.CheckEmailNull(txtEmail.Text,txtId.Text) ||
+                !Database.CheckEmailNull(txtEmail.Text, txtId.Text) ||
                 !Database.KiemTraSoDienThoai(txt_sdt.Text))
             {
                 return;
@@ -240,11 +240,10 @@ namespace LapStore.Widget
 
             // Kiểm tra xem có ảnh đại diện hay không
             imagePath = imageSp.Tag?.ToString() ?? "";
-            
+
 
             var user = new UserModel
             {
-
                 Id = txtId.Text,
                 HoTen = txtTen.Text,
                 Email = txtEmail.Text,
@@ -258,9 +257,9 @@ namespace LapStore.Widget
             // Gọi hàm cập nhật thông tin người dùng
             UserController.UpdateUser(user);
             LoadingData();
-            MessageBox.Show("Cập nhật người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Cập nhật người dùng thành công!", "Thông báo", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
             ClearForm();
-
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -271,16 +270,17 @@ namespace LapStore.Widget
             // Kiểm tra ID người dùng có rỗng không
             if (string.IsNullOrWhiteSpace(userId))
             {
-                MessageBox.Show("Vui lòng nhập ID người dùng để xóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập ID người dùng để xóa!", "Cảnh báo", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
                 txtId.Focus();
                 return;
             }
 
             // Xác nhận trước khi xóa
             var result = MessageBox.Show("Bạn có chắc chắn muốn xóa người dùng này?",
-                                         "Xác nhận xóa",
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Warning);
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
@@ -291,12 +291,14 @@ namespace LapStore.Widget
 
                     // Tải lại dữ liệu sau khi xóa
                     LoadingData();
-                    MessageBox.Show("Xóa người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Xóa người dùng thành công!", "Thông báo", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                     ClearForm();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Xóa người dùng thất bại! Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Xóa người dùng thất bại! Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
         }

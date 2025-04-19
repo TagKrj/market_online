@@ -15,13 +15,12 @@ namespace LapStore.Widget
     {
         string MADANHMUC = "DM001";
         string imagePath;
+
         public sanPhamUserControl()
         {
             InitializeComponent();
-  
-          
         }
-     
+
         private void ClearForm()
         {
             txtMaSp.Clear();
@@ -59,7 +58,7 @@ namespace LapStore.Widget
                     {
                         using (var bmpTemp = new Bitmap(sp.HinhAnh))
                         {
-                            img = new Bitmap(bmpTemp, new Size(80, 80));  // Resize về 50x50
+                            img = new Bitmap(bmpTemp, new Size(80, 80)); // Resize về 50x50
                         }
                     }
                     catch (Exception ex)
@@ -69,28 +68,29 @@ namespace LapStore.Widget
                 }
 
                 // Thêm hàng mới vào DataGridView
-                        int rowIndex = dgvSP.Rows.Add(
-                             img,                        // Hình ảnh
-                             sp.MaSp,                 // Mã sản phẩm
-                             sp.MaDm,                 // Mã danh mục
-                             sp.TenSp,                // Tên sản phẩm
-                             sp.MoTa,                 // Mô tả
-                             sp.GiaNhap,              // Giá nhập
-                             sp.GiaBan,               // Giá bán
-                             sp.SoLuong,              // Số lượng
-                             sp.CreatedAt             // Ngày tạo
-                         );
+                int rowIndex = dgvSP.Rows.Add(
+                    img, // Hình ảnh
+                    sp.MaSp, // Mã sản phẩm
+                    sp.MaDm, // Mã danh mục
+                    sp.TenSp, // Tên sản phẩm
+                    sp.MoTa, // Mô tả
+                    sp.GiaNhap, // Giá nhập
+                    sp.GiaBan, // Giá bán
+                    sp.GiaThat, // Giá bán thật
+                    sp.SoLuong, // Số lượng
+                    sp.GiamGia, // Giảm giá
+                    sp.NhaCungCap, // Nhà cung cấp
+                    sp.CreatedAt // Ngày tạo
+                );
 
                 // Lưu đường dẫn vào thuộc tính Tag của ô hình ảnh
                 dgvSP.Rows[rowIndex].Cells["HinhAnh"].Tag = sp.HinhAnh;
             }
         }
 
-        
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-        
             // Sử dụng hàm kiểm tra từ lớp Validator
             if (!Database.KiemTraMaSp(txtMaSp.Text) ||
                 !Database.KiemTraGia(txtGiaNhap.Text, txtGiaBan.Text) ||
@@ -122,8 +122,6 @@ namespace LapStore.Widget
             ClearForm();
         }
 
-        
-
 
         private void dgvLapTop_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -144,7 +142,7 @@ namespace LapStore.Widget
                 // Hiển thị hình ảnh lên PictureBox
                 try
                 {
-                        imagePath = row.Cells["HinhAnh"].Tag?.ToString();
+                    imagePath = row.Cells["HinhAnh"].Tag?.ToString();
                     if (!string.IsNullOrEmpty(imagePath) && System.IO.File.Exists(imagePath))
                     {
                         using (var bmpTemp = new Bitmap(imagePath))
@@ -152,6 +150,7 @@ namespace LapStore.Widget
                             imageSp.Image = new Bitmap(bmpTemp);
                             imageSp.Tag = imagePath;
                         }
+
                         imageSp.BackColor = Color.Transparent; // Không có màu nền khi có ảnh
                     }
                     else
@@ -168,6 +167,7 @@ namespace LapStore.Widget
                 }
             }
         }
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             // Lấy mã sản phẩm từ TextBox
@@ -183,9 +183,9 @@ namespace LapStore.Widget
 
             // Xác nhận trước khi xóa
             var result = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này?",
-                                         "Xác nhận xóa",
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Warning);
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
@@ -208,7 +208,6 @@ namespace LapStore.Widget
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-
             // Sử dụng hàm kiểm tra từ lớp Validator
             if (!Database.CheckNull(txtMaSp.Text) ||
                 !Database.KiemTraGia(txtGiaNhap.Text, txtGiaBan.Text) ||
@@ -238,7 +237,6 @@ namespace LapStore.Widget
             LoadingData(MADANHMUC);
             MessageBox.Show("Cập nhật sản phẩm thành công!");
             ClearForm();
-
         }
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
@@ -259,7 +257,7 @@ namespace LapStore.Widget
                     {
                         using (var bmpTemp = new Bitmap(sp.HinhAnh))
                         {
-                            img = new Bitmap(bmpTemp, new Size(80, 80));  // Resize về 80x80
+                            img = new Bitmap(bmpTemp, new Size(80, 80)); // Resize về 80x80
                         }
                     }
                     catch (Exception ex)
@@ -270,14 +268,17 @@ namespace LapStore.Widget
 
                 // Thêm hàng mới vào DataGridView
                 int rowIndex = dgvSP.Rows.Add(
-                    img,       // Hình ảnh
-                    sp.MaSp,   // Mã sản phẩm
-                    sp.MaDm,   // Mã danh mục
-                    sp.TenSp,  // Tên sản phẩm
-                    sp.MoTa,   // Mô tả
+                    img, // Hình ảnh
+                    sp.MaSp, // Mã sản phẩm
+                    sp.MaDm, // Mã danh mục
+                    sp.TenSp, // Tên sản phẩm
+                    sp.MoTa, // Mô tả
                     sp.GiaNhap, // Giá nhập
-                    sp.GiaBan,  // Giá bán
+                    sp.GiaBan, // Giá bán
+                    sp.GiaThat, // Giá bán thật
                     sp.SoLuong, // Số lượng
+                    sp.GiamGia, // Giảm giá
+                    sp.NhaCungCap, // Nhà cung cấp
                     sp.CreatedAt // Ngày tạo
                 );
 
