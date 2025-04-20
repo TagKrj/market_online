@@ -7,6 +7,7 @@ namespace LapStore.Model
         public string Id { get; set; }
         public string MaDonHang { get; set; }
         public string MaSp { get; set; }
+        public string TenSanPham { get; set; }
         public int SoLuong { get; set; }
         public long DoanhThu { get; set; }
         public long LoiNhuan { get; set; }
@@ -16,11 +17,12 @@ namespace LapStore.Model
         public ThongKe() { }
 
         // Constructor có tham số
-        public ThongKe(string id, string maDonHang, string maSp, int soLuong, long doanhThu, long loiNhuan, DateTime createdAt)
+        public ThongKe(string id, string maDonHang, string maSp,string tenSanPham, int soLuong, long doanhThu, long loiNhuan, DateTime createdAt)
         {
             Id = id;
             MaDonHang = maDonHang;
             MaSp = maSp;
+            TenSanPham = tenSanPham;
             SoLuong = soLuong;
             DoanhThu = doanhThu;
             LoiNhuan = loiNhuan;

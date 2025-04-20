@@ -1,5 +1,4 @@
-using LapStore.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -8,19 +7,18 @@ using System.Threading.Tasks;
 
 namespace LapStore.Controller
 {
-    public class DoanhThuNhomHangController
+    internal class DoanhThuNhomHangController
     {
-        // Lấy doanh thu theo từng danh mục trong khoảng thời gian
         public static Dictionary<string, long> GetDoanhThuTheoDanhMuc(DateTime tuNgay, DateTime denNgay)
         {
             Dictionary<string, long> doanhThuDanhMuc = new Dictionary<string, long>();
             string query = @"SELECT DM.tenDanhMuc, SUM(TK.doanhThu) as tongDoanhThu 
-                            FROM THONGKE TK
-                            JOIN SANPHAM SP ON TK.maSp = SP.maSp
-                            JOIN DANHMUC DM ON SP.maDm = DM.id
-                            WHERE TK.created_at BETWEEN @tuNgay AND @denNgay 
-                            GROUP BY DM.tenDanhMuc
-                            ORDER BY tongDoanhThu DESC";
+                        FROM THONGKE TK
+                        JOIN SANPHAM SP ON TK.maSp = SP.maSp
+                        JOIN DANHMUC DM ON SP.maDm = DM.id
+                        WHERE TK.created_at BETWEEN @tuNgay AND @denNgay 
+                        GROUP BY DM.tenDanhMuc
+                        ORDER BY tongDoanhThu DESC";
 
             try
             {
@@ -55,12 +53,12 @@ namespace LapStore.Controller
         {
             Dictionary<string, long> loiNhuanDanhMuc = new Dictionary<string, long>();
             string query = @"SELECT DM.tenDanhMuc, SUM(TK.loiNhuan) as tongLoiNhuan 
-                            FROM THONGKE TK
-                            JOIN SANPHAM SP ON TK.maSp = SP.maSp
-                            JOIN DANHMUC DM ON SP.maDm = DM.id
-                            WHERE TK.created_at BETWEEN @tuNgay AND @denNgay 
-                            GROUP BY DM.tenDanhMuc
-                            ORDER BY tongLoiNhuan DESC";
+                        FROM THONGKE TK
+                        JOIN SANPHAM SP ON TK.maSp = SP.maSp
+                        JOIN DANHMUC DM ON SP.maDm = DM.id
+                        WHERE TK.created_at BETWEEN @tuNgay AND @denNgay 
+                        GROUP BY DM.tenDanhMuc
+                        ORDER BY tongLoiNhuan DESC";
 
             try
             {
@@ -95,12 +93,12 @@ namespace LapStore.Controller
         {
             Dictionary<string, int> soLuongBanDanhMuc = new Dictionary<string, int>();
             string query = @"SELECT DM.tenDanhMuc, SUM(TK.soLuong) as tongSoLuong 
-                            FROM THONGKE TK
-                            JOIN SANPHAM SP ON TK.maSp = SP.maSp
-                            JOIN DANHMUC DM ON SP.maDm = DM.id
-                            WHERE TK.created_at BETWEEN @tuNgay AND @denNgay 
-                            GROUP BY DM.tenDanhMuc
-                            ORDER BY tongSoLuong DESC";
+                        FROM THONGKE TK
+                        JOIN SANPHAM SP ON TK.maSp = SP.maSp
+                        JOIN DANHMUC DM ON SP.maDm = DM.id
+                        WHERE TK.created_at BETWEEN @tuNgay AND @denNgay 
+                        GROUP BY DM.tenDanhMuc
+                        ORDER BY tongSoLuong DESC";
 
             try
             {
@@ -131,17 +129,18 @@ namespace LapStore.Controller
         }
 
         // Lấy chi tiết doanh thu theo danh mục và sản phẩm 
-        public static List<ThongKeDoanhThuSanPham> GetChiTietDoanhThuTheoDanhMuc(string maDm, DateTime tuNgay, DateTime denNgay)
+        public static List<ThongKeDoanhThuSanPham> GetChiTietDoanhThuTheoDanhMuc(string maDm, DateTime tuNgay,
+            DateTime denNgay)
         {
             List<ThongKeDoanhThuSanPham> danhSachThongKe = new List<ThongKeDoanhThuSanPham>();
             string query = @"SELECT SP.maSp, SP.tenSp, DM.tenDanhMuc, SUM(TK.soLuong) as tongSoLuong, 
-                            SUM(TK.doanhThu) as tongDoanhThu, SUM(TK.loiNhuan) as tongLoiNhuan
-                            FROM THONGKE TK
-                            JOIN SANPHAM SP ON TK.maSp = SP.maSp
-                            JOIN DANHMUC DM ON SP.maDm = DM.id
-                            WHERE SP.maDm = @maDm AND TK.created_at BETWEEN @tuNgay AND @denNgay 
-                            GROUP BY SP.maSp, SP.tenSp, DM.tenDanhMuc
-                            ORDER BY tongDoanhThu DESC";
+                        SUM(TK.doanhThu) as tongDoanhThu, SUM(TK.loiNhuan) as tongLoiNhuan
+                        FROM THONGKE TK
+                        JOIN SANPHAM SP ON TK.maSp = SP.maSp
+                        JOIN DANHMUC DM ON SP.maDm = DM.id
+                        WHERE SP.maDm = @maDm AND TK.created_at BETWEEN @tuNgay AND @denNgay 
+                        GROUP BY SP.maSp, SP.tenSp, DM.tenDanhMuc
+                        ORDER BY tongDoanhThu DESC";
 
             try
             {
@@ -184,13 +183,13 @@ namespace LapStore.Controller
         {
             List<ThongKeDoanhThuSanPham> danhSachThongKe = new List<ThongKeDoanhThuSanPham>();
             string query = @"SELECT SP.maSp, SP.tenSp, DM.tenDanhMuc, SUM(TK.soLuong) as tongSoLuong, 
-                            SUM(TK.doanhThu) as tongDoanhThu, SUM(TK.loiNhuan) as tongLoiNhuan
-                            FROM THONGKE TK
-                            JOIN SANPHAM SP ON TK.maSp = SP.maSp
-                            JOIN DANHMUC DM ON SP.maDm = DM.id
-                            WHERE TK.created_at BETWEEN @tuNgay AND @denNgay 
-                            GROUP BY SP.maSp, SP.tenSp, DM.tenDanhMuc
-                            ORDER BY tongDoanhThu DESC";
+                        SUM(TK.doanhThu) as tongDoanhThu, SUM(TK.loiNhuan) as tongLoiNhuan
+                        FROM THONGKE TK
+                        JOIN SANPHAM SP ON TK.maSp = SP.maSp
+                        JOIN DANHMUC DM ON SP.maDm = DM.id
+                        WHERE TK.created_at BETWEEN @tuNgay AND @denNgay 
+                        GROUP BY SP.maSp, SP.tenSp, DM.tenDanhMuc
+                        ORDER BY tongDoanhThu DESC";
 
             try
             {

@@ -109,9 +109,13 @@
   <ItemGroup>
     <Compile Include="Controller\ChiTietDonHangController.cs" />
     <Compile Include="Controller\DanhMucController.cs" />
+    <Compile Include="Controller\DoanhThuLaiLoController.cs" />
+    <Compile Include="Controller\DoanhThuNhomHangController.cs" />
     <Compile Include="Controller\DonHangController.cs" />
     <Compile Include="Controller\GiamGiaController.cs" />
     <Compile Include="Controller\GioHangController.cs" />
+    <Compile Include="Controller\KhoHangController.cs" />
+    <Compile Include="Controller\LichSuKhachHangController.cs" />
     <Compile Include="Controller\NhaCungCapController.cs" />
     <Compile Include="Controller\SanPhamController.cs" />
     <Compile Include="Controller\ThongKeController.cs" />

@@ -1,5 +1,4 @@
-using LapStore.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -8,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace LapStore.Controller
 {
-    public class KhoHangController
+    internal class KhoHangController
     {
-        // Lấy danh sách tất cả sản phẩm trong kho
         public static List<SanPhamKho> GetAllSanPhamKho()
         {
             List<SanPhamKho> danhSachSanPham = new List<SanPhamKho>();
             string query = @"SELECT SP.maSp, SP.tenSp, SP.hinhAnh, DM.tenDanhMuc, SP.soLuong, SP.giaNhap, SP.giaBan, SP.created_at
-                            FROM SANPHAM SP
-                            JOIN DANHMUC DM ON SP.maDm = DM.id
-                            ORDER BY SP.soLuong ASC";
+                        FROM SANPHAM SP
+                        JOIN DANHMUC DM ON SP.maDm = DM.id
+                        ORDER BY SP.soLuong ASC";
 
             try
             {
@@ -59,10 +57,10 @@ namespace LapStore.Controller
         {
             List<SanPhamKho> danhSachSanPham = new List<SanPhamKho>();
             string query = @"SELECT SP.maSp, SP.tenSp, SP.hinhAnh, DM.tenDanhMuc, SP.soLuong, SP.giaNhap, SP.giaBan, SP.created_at
-                            FROM SANPHAM SP
-                            JOIN DANHMUC DM ON SP.maDm = DM.id
-                            WHERE SP.soLuong < 10
-                            ORDER BY SP.soLuong ASC";
+                        FROM SANPHAM SP
+                        JOIN DANHMUC DM ON SP.maDm = DM.id
+                        WHERE SP.soLuong < 10
+                        ORDER BY SP.soLuong ASC";
 
             try
             {
@@ -104,10 +102,10 @@ namespace LapStore.Controller
         {
             List<SanPhamKho> danhSachSanPham = new List<SanPhamKho>();
             string query = @"SELECT SP.maSp, SP.tenSp, SP.hinhAnh, DM.tenDanhMuc, SP.soLuong, SP.giaNhap, SP.giaBan, SP.created_at
-                            FROM SANPHAM SP
-                            JOIN DANHMUC DM ON SP.maDm = DM.id
-                            WHERE SP.soLuong = 0
-                            ORDER BY SP.created_at DESC";
+                        FROM SANPHAM SP
+                        JOIN DANHMUC DM ON SP.maDm = DM.id
+                        WHERE SP.soLuong = 0
+                        ORDER BY SP.created_at DESC";
 
             try
             {
@@ -149,10 +147,10 @@ namespace LapStore.Controller
         {
             List<SanPhamKho> danhSachSanPham = new List<SanPhamKho>();
             string query = @"SELECT SP.maSp, SP.tenSp, SP.hinhAnh, DM.tenDanhMuc, SP.soLuong, SP.giaNhap, SP.giaBan, SP.created_at
-                            FROM SANPHAM SP
-                            JOIN DANHMUC DM ON SP.maDm = DM.id
-                            WHERE SP.maDm = @maDanhMuc
-                            ORDER BY SP.soLuong ASC";
+                        FROM SANPHAM SP
+                        JOIN DANHMUC DM ON SP.maDm = DM.id
+                        WHERE SP.maDm = @maDanhMuc
+                        ORDER BY SP.soLuong ASC";
 
             try
             {
@@ -222,10 +220,10 @@ namespace LapStore.Controller
         {
             List<SanPhamKho> danhSachSanPham = new List<SanPhamKho>();
             string query = @"SELECT SP.maSp, SP.tenSp, SP.hinhAnh, DM.tenDanhMuc, SP.soLuong, SP.giaNhap, SP.giaBan, SP.created_at
-                            FROM SANPHAM SP
-                            JOIN DANHMUC DM ON SP.maDm = DM.id
-                            WHERE SP.maSp LIKE @keyword OR SP.tenSp LIKE @keyword OR DM.tenDanhMuc LIKE @keyword
-                            ORDER BY SP.soLuong ASC";
+                        FROM SANPHAM SP
+                        JOIN DANHMUC DM ON SP.maDm = DM.id
+                        WHERE SP.maSp LIKE @keyword OR SP.tenSp LIKE @keyword OR DM.tenDanhMuc LIKE @keyword
+                        ORDER BY SP.soLuong ASC";
 
             try
             {
@@ -318,10 +316,10 @@ namespace LapStore.Controller
         {
             Dictionary<string, int> soLuongTheoDanhMuc = new Dictionary<string, int>();
             string query = @"SELECT DM.tenDanhMuc, SUM(SP.soLuong) as tongSoLuong
-                            FROM SANPHAM SP
-                            JOIN DANHMUC DM ON SP.maDm = DM.id
-                            GROUP BY DM.tenDanhMuc
-                            ORDER BY tongSoLuong DESC";
+                        FROM SANPHAM SP
+                        JOIN DANHMUC DM ON SP.maDm = DM.id
+                        GROUP BY DM.tenDanhMuc
+                        ORDER BY tongSoLuong DESC";
 
             try
             {

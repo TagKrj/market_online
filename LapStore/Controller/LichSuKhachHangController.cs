@@ -1,4 +1,4 @@
-using LapStore.Model;
+﻿using LapStore.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,16 +8,15 @@ using System.Threading.Tasks;
 
 namespace LapStore.Controller
 {
-    public class LichSuKhachHangController
+    internal class LichSuKhachHangController
     {
-        // Lấy danh sách lịch sử mua hàng của tất cả khách hàng
         public static List<LichSuMuaHang> GetLichSuMuaHangTatCaKhachHang()
         {
             List<LichSuMuaHang> lichSuList = new List<LichSuMuaHang>();
             string query = @"SELECT DH.id, DH.maUser, U.hoTen, DH.tongTien, DH.trangThai, DH.created_at, DH.phuongThucThanhToan
-                            FROM DONHANG DH
-                            JOIN USERS U ON DH.maUser = U.id
-                            ORDER BY DH.created_at DESC";
+                        FROM DONHANG DH
+                        JOIN USERS U ON DH.maUser = U.id
+                        ORDER BY DH.created_at DESC";
 
             try
             {
@@ -58,10 +57,10 @@ namespace LapStore.Controller
         {
             List<LichSuMuaHang> lichSuList = new List<LichSuMuaHang>();
             string query = @"SELECT DH.id, DH.maUser, U.hoTen, DH.tongTien, DH.trangThai, DH.created_at, DH.phuongThucThanhToan
-                            FROM DONHANG DH
-                            JOIN USERS U ON DH.maUser = U.id
-                            WHERE DH.maUser = @maKhachHang
-                            ORDER BY DH.created_at DESC";
+                        FROM DONHANG DH
+                        JOIN USERS U ON DH.maUser = U.id
+                        WHERE DH.maUser = @maKhachHang
+                        ORDER BY DH.created_at DESC";
 
             try
             {
@@ -103,9 +102,9 @@ namespace LapStore.Controller
         {
             List<ChiTietDonHang> chiTietList = new List<ChiTietDonHang>();
             string query = @"SELECT CT.id, CT.maDonHang, CT.maSp, SP.tenSp, CT.soLuong, CT.giaBan, SP.hinhAnh
-                            FROM CHITIETDONHANG CT
-                            JOIN SANPHAM SP ON CT.maSp = SP.maSp
-                            WHERE CT.maDonHang = @maDonHang";
+                        FROM CHITIETDONHANG CT
+                        JOIN SANPHAM SP ON CT.maSp = SP.maSp
+                        WHERE CT.maDonHang = @maDonHang";
 
             try
             {
@@ -188,10 +187,10 @@ namespace LapStore.Controller
         {
             List<LichSuMuaHang> lichSuList = new List<LichSuMuaHang>();
             string query = @"SELECT DH.id, DH.maUser, U.hoTen, DH.tongTien, DH.trangThai, DH.created_at, DH.phuongThucThanhToan
-                            FROM DONHANG DH
-                            JOIN USERS U ON DH.maUser = U.id
-                            WHERE DH.id LIKE @keyword OR U.hoTen LIKE @keyword OR U.email LIKE @keyword
-                            ORDER BY DH.created_at DESC";
+                        FROM DONHANG DH
+                        JOIN USERS U ON DH.maUser = U.id
+                        WHERE DH.id LIKE @keyword OR U.hoTen LIKE @keyword OR U.email LIKE @keyword
+                        ORDER BY DH.created_at DESC";
 
             try
             {
@@ -295,3 +294,4 @@ namespace LapStore.Controller
         public string PhuongThucThanhToan { get; set; }
     }
 }
+

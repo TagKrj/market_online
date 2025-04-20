@@ -1,4 +1,4 @@
-using LapStore.Model;
+﻿using LapStore.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LapStore.Controller
 {
-    public class DoanhThuLaiLoController
+    internal class DoanhThuLaiLoController
     {
         // Lấy tổng doanh thu từ ngày đến ngày
         public static long GetTongDoanhThu(DateTime tuNgay, DateTime denNgay)
@@ -75,10 +75,10 @@ namespace LapStore.Controller
         {
             List<ThongKe> danhSachThongKe = new List<ThongKe>();
             string query = @"SELECT TK.id, TK.maDonHang, TK.maSp, SP.tenSp, TK.soLuong, TK.doanhThu, TK.loiNhuan, TK.created_at 
-                            FROM THONGKE TK
-                            JOIN SANPHAM SP ON TK.maSp = SP.maSp
-                            WHERE TK.created_at BETWEEN @tuNgay AND @denNgay
-                            ORDER BY TK.created_at DESC";
+                     FROM THONGKE TK
+                     JOIN SANPHAM SP ON TK.maSp = SP.maSp
+                     WHERE TK.created_at BETWEEN @tuNgay AND @denNgay
+                     ORDER BY TK.created_at DESC";
 
             try
             {
@@ -122,10 +122,10 @@ namespace LapStore.Controller
         {
             Dictionary<DateTime, long> doanhThuNgay = new Dictionary<DateTime, long>();
             string query = @"SELECT CAST(created_at AS DATE) as ngay, SUM(doanhThu) as tongDoanhThu 
-                            FROM THONGKE 
-                            WHERE created_at BETWEEN @tuNgay AND @denNgay 
-                            GROUP BY CAST(created_at AS DATE)
-                            ORDER BY ngay";
+                     FROM THONGKE 
+                     WHERE created_at BETWEEN @tuNgay AND @denNgay 
+                     GROUP BY CAST(created_at AS DATE)
+                     ORDER BY ngay";
 
             try
             {
@@ -160,10 +160,10 @@ namespace LapStore.Controller
         {
             Dictionary<DateTime, long> loiNhuanNgay = new Dictionary<DateTime, long>();
             string query = @"SELECT CAST(created_at AS DATE) as ngay, SUM(loiNhuan) as tongLoiNhuan 
-                            FROM THONGKE 
-                            WHERE created_at BETWEEN @tuNgay AND @denNgay 
-                            GROUP BY CAST(created_at AS DATE)
-                            ORDER BY ngay";
+                     FROM THONGKE 
+                     WHERE created_at BETWEEN @tuNgay AND @denNgay 
+                     GROUP BY CAST(created_at AS DATE)
+                     ORDER BY ngay";
 
             try
             {

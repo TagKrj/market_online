@@ -7,8 +7,10 @@ namespace LapStore.Model
         public string Id { get; set; }
         public string MaDonHang { get; set; }
         public string MaSp { get; set; }
+        public string TenSp { get; set; }
         public int SoLuong { get; set; }
         public long GiaBan { get; set; }
+        public string HinhAnh { get; set; }
 
         // Constructor mặc định
         public ChiTietDonHang() { }
