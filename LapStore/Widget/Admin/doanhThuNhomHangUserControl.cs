@@ -18,7 +18,7 @@ namespace LapStore.Widget
         private DateTime tuNgay;
         private DateTime denNgay;
         private string selectedDanhMuc = "";
-       
+
         public doanhThuNhomHangUserControl()
         {
             InitializeComponent();
@@ -56,12 +56,12 @@ namespace LapStore.Widget
                     cbbDanhMuc.Items.Add("Tất cả");
 
                     // Thêm các danh mục vào combobox
-                    foreach (DanhMuc dm in danhMucs)
+                    foreach (DanhMuc danhMuc in danhMucs)
                     {
-                        cbbDanhMuc.Items.Add(dm.tenDanhMuc);
+                        cbbDanhMuc.Items.Add(danhMuc.TenDanhMuc);
                     }
 
-                    // Chọn item đầu tiên
+                    // Chọn "Tất cả" làm giá trị mặc định
                     cbbDanhMuc.SelectedIndex = 0;
                 }
             }

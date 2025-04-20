@@ -2,7 +2,7 @@
 
 namespace LapStore.Model
 {
-    internal class ThongKe
+    public class ThongKe
     {
         public string Id { get; set; }
         public string MaDonHang { get; set; }

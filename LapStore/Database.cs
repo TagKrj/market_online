@@ -17,6 +17,118 @@ namespace LapStore
             conn.Open();
             return conn;
         }
+
+        // Thêm phương thức ExecuteQuery để truy vấn dữ liệu
+        public static DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                using (SqlConnection connection = GetConnection())
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        if (parameters != null)
+                        {
+                            command.Parameters.AddRange(parameters);
+                        }
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi truy vấn dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dataTable;
+        }
+
+        // Thêm phương thức ExecuteScalar để truy vấn giá trị đơn
+        public static object ExecuteScalar(string query, SqlParameter[] parameters = null)
+        {
+            object result = null;
+            try
+            {
+                using (SqlConnection connection = GetConnection())
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        if (parameters != null)
+                        {
+                            command.Parameters.AddRange(parameters);
+                        }
+
+                        result = command.ExecuteScalar();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi truy vấn dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result;
+        }
+
+        // Thêm phương thức ExecuteNonQuery để thực hiện câu lệnh INSERT, UPDATE, DELETE
+        public static int ExecuteNonQuery(string query, SqlParameter[] parameters = null)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                using (SqlConnection connection = GetConnection())
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        if (parameters != null)
+                        {
+                            command.Parameters.AddRange(parameters);
+                        }
+
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi thực thi câu lệnh: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return rowsAffected;
+        }
+
+        // Phương thức thực thi stored procedure
+        public static DataTable ExecuteProcedure(string procName, SqlParameter[] parameters = null)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                using (SqlConnection connection = GetConnection())
+                {
+                    using (SqlCommand command = new SqlCommand(procName, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        if (parameters != null)
+                        {
+                            command.Parameters.AddRange(parameters);
+                        }
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi thực thi thủ tục: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dataTable;
+        }
+
         public static bool CheckNull(string maSp)
         {
             if (string.IsNullOrWhiteSpace(maSp))
@@ -164,7 +276,7 @@ namespace LapStore
             // Kiểm tra email đã tồn tại trong database (ngoại trừ tài khoản hiện tại)
             using (SqlConnection conn = Database.GetConnection())
             {
-               
+
                 string query = "SELECT COUNT(*) FROM USERS WHERE email = @email AND id != @currentUserId";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))

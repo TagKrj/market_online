@@ -1,14 +1,15 @@
-﻿using LapStore.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LapStore.Model;
 
 namespace LapStore.Controller
 {
-    internal class DoanhThuLaiLoController
+    public class DoanhThuLaiLoController
     {
         // Lấy tổng doanh thu từ ngày đến ngày
         public static long GetTongDoanhThu(DateTime tuNgay, DateTime denNgay)
@@ -191,6 +192,112 @@ namespace LapStore.Controller
             }
 
             return loiNhuanNgay;
+        }
+
+        // Phương thức lấy danh sách doanh thu lãi lỗ theo từ khóa tìm kiếm
+        public static List<ThongKeDoanhThuLaiLo> GetDoanhThuLaiLoByKeyword(string keyword)
+        {
+            try
+            {
+                List<ThongKeDoanhThuLaiLo> danhSachThongKe = new List<ThongKeDoanhThuLaiLo>();
+                string query = @"
+                    SELECT hd.MaHD, hd.NgayLap, kh.TenKH, 
+                           SUM(ct.SoLuong * sp.GiaVon) AS TienVon,
+                           SUM(ct.ThanhTien) AS TienBan,
+                           (SUM(ct.ThanhTien) - SUM(ct.SoLuong * sp.GiaVon)) AS LoiNhuan
+                    FROM HoaDon hd
+                    JOIN KhachHang kh ON hd.MaKH = kh.MaKH
+                    JOIN ChiTietHoaDon ct ON hd.MaHD = ct.MaHD
+                    JOIN SanPham sp ON ct.MaSP = sp.MaSP
+                    WHERE (kh.MaKH LIKE @keyword OR kh.TenKH LIKE @keyword)
+                    GROUP BY hd.MaHD, hd.NgayLap, kh.TenKH
+                    ORDER BY hd.NgayLap DESC";
+
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@keyword", "%" + keyword + "%")
+                };
+
+                DataTable data = Database.ExecuteQuery(query, parameters);
+                int stt = 1;
+                foreach (DataRow row in data.Rows)
+                {
+                    ThongKeDoanhThuLaiLo thongKe = new ThongKeDoanhThuLaiLo
+                    {
+                        STT = stt++,
+                        MaHD = row["MaHD"].ToString(),
+                        TenKH = row["TenKH"].ToString(),
+                        TienVon = Convert.ToDecimal(row["TienVon"]),
+                        TienBan = Convert.ToDecimal(row["TienBan"]),
+                        LoiNhuan = Convert.ToDecimal(row["LoiNhuan"])
+                    };
+                    danhSachThongKe.Add(thongKe);
+                }
+                return danhSachThongKe;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy dữ liệu doanh thu lãi lỗ: " + ex.Message);
+            }
+        }
+
+        // Phương thức lấy tất cả doanh thu lãi lỗ
+        public static List<ThongKeDoanhThuLaiLo> GetAllDoanhThuLaiLo()
+        {
+            try
+            {
+                List<ThongKeDoanhThuLaiLo> danhSachThongKe = new List<ThongKeDoanhThuLaiLo>();
+                string query = @"
+                    SELECT hd.MaHD, hd.NgayLap, kh.TenKH, 
+                           SUM(ct.SoLuong * sp.GiaVon) AS TienVon,
+                           SUM(ct.ThanhTien) AS TienBan,
+                           (SUM(ct.ThanhTien) - SUM(ct.SoLuong * sp.GiaVon)) AS LoiNhuan
+                    FROM HoaDon hd
+                    JOIN KhachHang kh ON hd.MaKH = kh.MaKH
+                    JOIN ChiTietHoaDon ct ON hd.MaHD = ct.MaHD
+                    JOIN SanPham sp ON ct.MaSP = sp.MaSP
+                    GROUP BY hd.MaHD, hd.NgayLap, kh.TenKH
+                    ORDER BY hd.NgayLap DESC";
+
+                DataTable data = Database.ExecuteQuery(query);
+                int stt = 1;
+                foreach (DataRow row in data.Rows)
+                {
+                    ThongKeDoanhThuLaiLo thongKe = new ThongKeDoanhThuLaiLo
+                    {
+                        STT = stt++,
+                        MaHD = row["MaHD"].ToString(),
+                        TenKH = row["TenKH"].ToString(),
+                        TienVon = Convert.ToDecimal(row["TienVon"]),
+                        TienBan = Convert.ToDecimal(row["TienBan"]),
+                        LoiNhuan = Convert.ToDecimal(row["LoiNhuan"])
+                    };
+                    danhSachThongKe.Add(thongKe);
+                }
+                return danhSachThongKe;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy dữ liệu doanh thu lãi lỗ: " + ex.Message);
+            }
+        }
+
+        // Phương thức tính tổng vốn
+        public static decimal TinhTongVon(List<ThongKeDoanhThuLaiLo> danhSach)
+        {
+            return danhSach.Sum(item => item.TienVon);
+        }
+
+        // Phương thức tính tổng tiền bán
+        public static decimal TinhTongTienBan(List<ThongKeDoanhThuLaiLo> danhSach)
+        {
+            return danhSach.Sum(item => item.TienBan);
+        }
+
+        // Phương thức tính tổng lợi nhuận
+        public static decimal TinhTongLoiNhuan(List<ThongKeDoanhThuLaiLo> danhSach)
+        {
+            return danhSach.Sum(item => item.LoiNhuan);
         }
     }
 }
