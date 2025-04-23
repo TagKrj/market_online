@@ -31,13 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminHome));
             this.menu = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_tenAdmin = new System.Windows.Forms.Label();
-            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panelChuyen = new System.Windows.Forms.Panel();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btn_DTLaiLo = new Guna.UI2.WinForms.Guna2Button();
             this.btn_DanhMuc = new Guna.UI2.WinForms.Guna2Button();
             this.btn_NhaCungCap = new Guna.UI2.WinForms.Guna2Button();
@@ -51,7 +44,15 @@
             this.btn_dangXuat = new Guna.UI2.WinForms.Guna2Button();
             this.btn_KhachHang = new Guna.UI2.WinForms.Guna2Button();
             this.btn_SanPham = new Guna.UI2.WinForms.Guna2Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_tenAdmin = new System.Windows.Forms.Label();
+            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.imageAdmin = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelChuyen = new System.Windows.Forms.Panel();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageAdmin)).BeginInit();
             this.SuspendLayout();
@@ -84,75 +85,6 @@
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(230, 750);
             this.menu.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(149)))), ((int)(((byte)(53)))));
-            this.label1.Location = new System.Drawing.Point(80, 47);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Admin";
-            // 
-            // txt_tenAdmin
-            // 
-            this.txt_tenAdmin.AutoSize = true;
-            this.txt_tenAdmin.BackColor = System.Drawing.Color.Transparent;
-            this.txt_tenAdmin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_tenAdmin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
-            this.txt_tenAdmin.Location = new System.Drawing.Point(80, 25);
-            this.txt_tenAdmin.Name = "txt_tenAdmin";
-            this.txt_tenAdmin.Size = new System.Drawing.Size(100, 17);
-            this.txt_tenAdmin.TabIndex = 1;
-            this.txt_tenAdmin.Text = "Bùi Hiền Trang";
-            // 
-            // bunifuSeparator1
-            // 
-            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
-            this.bunifuSeparator1.LineThickness = 1;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(3, 82);
-            this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(227, 20);
-            this.bunifuSeparator1.TabIndex = 1;
-            this.bunifuSeparator1.Transparency = 255;
-            this.bunifuSeparator1.Vertical = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel2.Location = new System.Drawing.Point(237, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(0, 0);
-            this.panel2.TabIndex = 1;
-            // 
-            // panelChuyen
-            // 
-            this.panelChuyen.BackColor = System.Drawing.Color.White;
-            this.panelChuyen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelChuyen.Location = new System.Drawing.Point(229, 0);
-            this.panelChuyen.MaximumSize = new System.Drawing.Size(970, 750);
-            this.panelChuyen.MinimumSize = new System.Drawing.Size(970, 750);
-            this.panelChuyen.Name = "panelChuyen";
-            this.panelChuyen.Size = new System.Drawing.Size(970, 750);
-            this.panelChuyen.TabIndex = 2;
-            // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.BorderRadius = 25;
-            this.guna2Elipse1.TargetControl = this;
-            // 
-            // guna2Elipse2
-            // 
-            this.guna2Elipse2.BorderRadius = 25;
-            this.guna2Elipse2.TargetControl = this.menu;
             // 
             // btn_DTLaiLo
             // 
@@ -282,7 +214,7 @@
             this.btn_KhuyenMai.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.btn_KhuyenMai.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
             this.btn_KhuyenMai.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
-            this.btn_KhuyenMai.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            this.btn_KhuyenMai.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             this.btn_KhuyenMai.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_KhuyenMai.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_KhuyenMai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -297,7 +229,7 @@
             this.btn_KhuyenMai.Name = "btn_KhuyenMai";
             this.btn_KhuyenMai.Size = new System.Drawing.Size(203, 26);
             this.btn_KhuyenMai.TabIndex = 21;
-            this.btn_KhuyenMai.Text = "Khuyến mãi";
+            this.btn_KhuyenMai.Text = "Quản lý sản phẩm";
             this.btn_KhuyenMai.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_KhuyenMai.Click += new System.EventHandler(this.btn_KhuyenMai_Click);
             // 
@@ -384,7 +316,7 @@
             this.btn_KhoHang.Name = "btn_KhoHang";
             this.btn_KhoHang.Size = new System.Drawing.Size(203, 26);
             this.btn_KhoHang.TabIndex = 18;
-            this.btn_KhoHang.Text = "Kho hàng";
+            this.btn_KhoHang.Text = "Quản lý khuyến mãi";
             this.btn_KhoHang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_KhoHang.Click += new System.EventHandler(this.btn_KhoHang_Click);
             // 
@@ -509,7 +441,7 @@
             this.btn_SanPham.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.btn_SanPham.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
             this.btn_SanPham.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
-            this.btn_SanPham.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image11")));
+            this.btn_SanPham.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             this.btn_SanPham.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_SanPham.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_SanPham.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -524,10 +456,50 @@
             this.btn_SanPham.Name = "btn_SanPham";
             this.btn_SanPham.Size = new System.Drawing.Size(203, 26);
             this.btn_SanPham.TabIndex = 1;
-            this.btn_SanPham.Text = "Quản lí sản phẩm";
+            this.btn_SanPham.Text = "Khuyến mãi";
             this.btn_SanPham.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_SanPham.TextFormatNoPrefix = true;
             this.btn_SanPham.Click += new System.EventHandler(this.btn_SanPham_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(149)))), ((int)(((byte)(53)))));
+            this.label1.Location = new System.Drawing.Point(80, 47);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Admin";
+            // 
+            // txt_tenAdmin
+            // 
+            this.txt_tenAdmin.AutoSize = true;
+            this.txt_tenAdmin.BackColor = System.Drawing.Color.Transparent;
+            this.txt_tenAdmin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_tenAdmin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
+            this.txt_tenAdmin.Location = new System.Drawing.Point(80, 25);
+            this.txt_tenAdmin.Name = "txt_tenAdmin";
+            this.txt_tenAdmin.Size = new System.Drawing.Size(100, 17);
+            this.txt_tenAdmin.TabIndex = 1;
+            this.txt_tenAdmin.Text = "Bùi Hiền Trang";
+            // 
+            // bunifuSeparator1
+            // 
+            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
+            this.bunifuSeparator1.LineThickness = 1;
+            this.bunifuSeparator1.Location = new System.Drawing.Point(3, 82);
+            this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(4);
+            this.bunifuSeparator1.Name = "bunifuSeparator1";
+            this.bunifuSeparator1.Size = new System.Drawing.Size(227, 20);
+            this.bunifuSeparator1.TabIndex = 1;
+            this.bunifuSeparator1.Transparency = 255;
+            this.bunifuSeparator1.Vertical = false;
             // 
             // imageAdmin
             // 
@@ -543,6 +515,40 @@
             this.imageAdmin.TabIndex = 1;
             this.imageAdmin.TabStop = false;
             this.imageAdmin.UseTransparentBackground = true;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel2.Location = new System.Drawing.Point(237, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(0, 0);
+            this.panel2.TabIndex = 1;
+            // 
+            // panelChuyen
+            // 
+            this.panelChuyen.BackColor = System.Drawing.Color.White;
+            this.panelChuyen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelChuyen.Location = new System.Drawing.Point(229, 0);
+            this.panelChuyen.MaximumSize = new System.Drawing.Size(970, 750);
+            this.panelChuyen.MinimumSize = new System.Drawing.Size(970, 750);
+            this.panelChuyen.Name = "panelChuyen";
+            this.panelChuyen.Size = new System.Drawing.Size(970, 750);
+            this.panelChuyen.TabIndex = 2;
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 25;
+            this.guna2Elipse1.TargetControl = this;
+            // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.BorderRadius = 25;
+            this.guna2Elipse2.TargetControl = this.menu;
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // adminHome
             // 
@@ -592,6 +598,7 @@
         private Guna.UI2.WinForms.Guna2Button btn_NhanVien;
         private Guna.UI2.WinForms.Guna2Button btn_DanhMuc;
         private Guna.UI2.WinForms.Guna2Button btn_DTLaiLo;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }
 

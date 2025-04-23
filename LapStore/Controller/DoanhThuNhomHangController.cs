@@ -87,6 +87,4 @@ namespace LapStore.Controller
             return ThongKeDanhMucs;
         }
     }
-
-    // Class để chứa thông tin thống kê doanh thu sản phẩm
 }

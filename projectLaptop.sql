@@ -50,6 +50,7 @@ CREATE TABLE SANPHAM (
 	FOREIGN KEY (maNhaCungCap) REFERENCES NHACUNGCAP(maNhaCungCap),
     CHECK (giaNhap < giaChuaBan)
 );
+
 -- xóa mấy bảng GIOHANG, DONHANG, THONGKE cũ đi xong mới add mấy bảng mới này vào
 CREATE TABLE GIOHANG (
     id CHAR(10) PRIMARY KEY,
@@ -60,7 +61,14 @@ CREATE TABLE GIOHANG (
     FOREIGN KEY (maUser) REFERENCES USERS(id),
     FOREIGN KEY (maSp) REFERENCES SANPHAM(maSp)
 );
-
+SELECT
+    dh.id AS idDonHang,
+    dh.created_at AS created_atDonHang,
+    u.hoTen AS hoTenUsers
+FROM
+    DONHANG dh
+INNER JOIN
+    USERS u ON dh.maUser = u.id
 -- Bảng DONHANG (Lưu thông tin đơn hàng)
 CREATE TABLE DONHANG (
     id CHAR(10) PRIMARY KEY,

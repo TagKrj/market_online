@@ -95,7 +95,8 @@ namespace LapStore
 
         private void btn_SanPham_Click(object sender, EventArgs e)
         {
-            sanPhamUserControl uc = new sanPhamUserControl();
+            
+            GiamGiaUserControl uc = new GiamGiaUserControl();
             AddUserControl(uc);
         }
 
@@ -131,7 +132,7 @@ namespace LapStore
 
         private void btn_KhuyenMai_Click(object sender, EventArgs e)
         {
-            GiamGiaUserControl uc = new GiamGiaUserControl();
+            sanPhamUserControl uc = new sanPhamUserControl();
             AddUserControl(uc);
         }
 

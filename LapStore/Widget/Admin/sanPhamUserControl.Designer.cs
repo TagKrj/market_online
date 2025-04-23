@@ -49,6 +49,18 @@
             this.txtSoLuong = new Guna.UI2.WinForms.Guna2TextBox();
             this.dateCreateAt = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dgvSP = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.hinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.maSp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maDm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenSp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.giaNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.giaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.giaChuaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.giamGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
             this.btn_taiAnh = new Guna.UI2.WinForms.Guna2Button();
             this.imageSp = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -71,18 +83,7 @@
             this.cboNcc = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtSoGiamGia = new Guna.UI2.WinForms.Guna2TextBox();
-            this.hinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.maSp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maDm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenSp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.giaNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.giaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.giaChuaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.giamGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageSp)).BeginInit();
             this.guna2GradientPanel1.SuspendLayout();
@@ -417,6 +418,81 @@
             this.dgvSP.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.dgvSP.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvSP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLapTop_CellClick);
+            // 
+            // hinhAnh
+            // 
+            this.hinhAnh.HeaderText = "Hình ảnh";
+            this.hinhAnh.MinimumWidth = 30;
+            this.hinhAnh.Name = "hinhAnh";
+            this.hinhAnh.ReadOnly = true;
+            this.hinhAnh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.hinhAnh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // maSp
+            // 
+            this.maSp.HeaderText = "Mã Sản Phẩm";
+            this.maSp.Name = "maSp";
+            this.maSp.ReadOnly = true;
+            // 
+            // maDm
+            // 
+            this.maDm.HeaderText = "Mã Danh Mục";
+            this.maDm.Name = "maDm";
+            this.maDm.ReadOnly = true;
+            // 
+            // tenSp
+            // 
+            this.tenSp.HeaderText = "Tên Sản Phẩm";
+            this.tenSp.Name = "tenSp";
+            this.tenSp.ReadOnly = true;
+            // 
+            // moTa
+            // 
+            this.moTa.HeaderText = "Mô Tả";
+            this.moTa.Name = "moTa";
+            this.moTa.ReadOnly = true;
+            // 
+            // giaNhap
+            // 
+            this.giaNhap.HeaderText = "Giá Nhập";
+            this.giaNhap.Name = "giaNhap";
+            this.giaNhap.ReadOnly = true;
+            // 
+            // giaBan
+            // 
+            this.giaBan.HeaderText = "Giá Bán";
+            this.giaBan.Name = "giaBan";
+            this.giaBan.ReadOnly = true;
+            // 
+            // giaChuaBan
+            // 
+            this.giaChuaBan.HeaderText = "Giá Chưa Bán";
+            this.giaChuaBan.Name = "giaChuaBan";
+            this.giaChuaBan.ReadOnly = true;
+            // 
+            // soLuong
+            // 
+            this.soLuong.HeaderText = "Số Lượng";
+            this.soLuong.Name = "soLuong";
+            this.soLuong.ReadOnly = true;
+            // 
+            // giamGia
+            // 
+            this.giamGia.HeaderText = "Giảm Giá";
+            this.giamGia.Name = "giamGia";
+            this.giamGia.ReadOnly = true;
+            // 
+            // nhaCungCap
+            // 
+            this.nhaCungCap.HeaderText = "Nhà Cung Cấp";
+            this.nhaCungCap.Name = "nhaCungCap";
+            this.nhaCungCap.ReadOnly = true;
+            // 
+            // createAt
+            // 
+            this.createAt.HeaderText = "CreateAt";
+            this.createAt.Name = "createAt";
+            this.createAt.ReadOnly = true;
             // 
             // btnTimKiem
             // 
@@ -779,80 +855,11 @@
             this.txtSoGiamGia.Size = new System.Drawing.Size(41, 36);
             this.txtSoGiamGia.TabIndex = 70;
             // 
-            // hinhAnh
+            // guna2DragControl1
             // 
-            this.hinhAnh.HeaderText = "Hình ảnh";
-            this.hinhAnh.MinimumWidth = 30;
-            this.hinhAnh.Name = "hinhAnh";
-            this.hinhAnh.ReadOnly = true;
-            this.hinhAnh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.hinhAnh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // maSp
-            // 
-            this.maSp.HeaderText = "Mã Sản Phẩm";
-            this.maSp.Name = "maSp";
-            this.maSp.ReadOnly = true;
-            // 
-            // maDm
-            // 
-            this.maDm.HeaderText = "Mã Danh Mục";
-            this.maDm.Name = "maDm";
-            this.maDm.ReadOnly = true;
-            // 
-            // tenSp
-            // 
-            this.tenSp.HeaderText = "Tên Sản Phẩm";
-            this.tenSp.Name = "tenSp";
-            this.tenSp.ReadOnly = true;
-            // 
-            // moTa
-            // 
-            this.moTa.HeaderText = "Mô Tả";
-            this.moTa.Name = "moTa";
-            this.moTa.ReadOnly = true;
-            // 
-            // giaNhap
-            // 
-            this.giaNhap.HeaderText = "Giá Nhập";
-            this.giaNhap.Name = "giaNhap";
-            this.giaNhap.ReadOnly = true;
-            // 
-            // giaBan
-            // 
-            this.giaBan.HeaderText = "Giá Bán";
-            this.giaBan.Name = "giaBan";
-            this.giaBan.ReadOnly = true;
-            // 
-            // giaChuaBan
-            // 
-            this.giaChuaBan.HeaderText = "Giá Chưa Bán";
-            this.giaChuaBan.Name = "giaChuaBan";
-            this.giaChuaBan.ReadOnly = true;
-            // 
-            // soLuong
-            // 
-            this.soLuong.HeaderText = "Số Lượng";
-            this.soLuong.Name = "soLuong";
-            this.soLuong.ReadOnly = true;
-            // 
-            // giamGia
-            // 
-            this.giamGia.HeaderText = "Giảm Giá";
-            this.giamGia.Name = "giamGia";
-            this.giamGia.ReadOnly = true;
-            // 
-            // nhaCungCap
-            // 
-            this.nhaCungCap.HeaderText = "Nhà Cung Cấp";
-            this.nhaCungCap.Name = "nhaCungCap";
-            this.nhaCungCap.ReadOnly = true;
-            // 
-            // createAt
-            // 
-            this.createAt.HeaderText = "CreateAt";
-            this.createAt.Name = "createAt";
-            this.createAt.ReadOnly = true;
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this;
+            this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // sanPhamUserControl
             // 
@@ -962,5 +969,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn giamGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn nhaCungCap;
         private System.Windows.Forms.DataGridViewTextBoxColumn createAt;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }
