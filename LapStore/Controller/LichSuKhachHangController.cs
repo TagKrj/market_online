@@ -12,192 +12,100 @@ namespace LapStore.Controller
     public class LichSuKhachHangController
     {
         // Phương thức lấy thông tin khách hàng dựa trên từ khóa tìm kiếm
-        public static KhachHang GetKhachHangByKeyword(string keyword)
+        public static List<LichSuDonHangInfo> searchLichSuDonHangInfos(string text)
         {
-            try
-            {
-                string query = "SELECT * FROM KhachHang WHERE MaKH LIKE @keyword OR TenKH LIKE @keyword";
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@keyword", "%" + keyword + "%")
-                };
+            List<LichSuDonHangInfo> LichSuDonHangInfos = new List<LichSuDonHangInfo>();
 
-                DataTable data = Database.ExecuteQuery(query, parameters);
-                if (data.Rows.Count > 0)
+            string query = @"
+            SELECT
+                dh.id AS idDonHang,
+                dh.created_at AS created_atDonHang,
+                u.hoTen AS hoTenUsers
+            FROM
+                DONHANG dh
+            INNER JOIN
+                USERS u ON dh.maUser = u.id
+            WHERE
+                dh.maUser = @UserId";
+            using (SqlCommand cmd = new SqlCommand(query, Database.GetConnection()))
+            {
+                cmd.Parameters.AddWithValue("@UserId", text);
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    DataRow row = data.Rows[0];
-                    KhachHang khachHang = new KhachHang
+                    while (reader.Read())
                     {
-                        MaKH = row["MaKH"].ToString(),
-                        TenKH = row["TenKH"].ToString(),
-                        DiaChi = row["DiaChi"].ToString(),
-                        SoDT = row["SoDT"].ToString(),
-                        Email = row["Email"].ToString()
-                    };
-                    return khachHang;
+                        LichSuDonHangInfos.Add(new LichSuDonHangInfo
+                        {
+                            IdDonHang = reader["idDonHang"].ToString(), // Sửa lại tên cột
+                            HoTenUsers = reader["hoTenUsers"].ToString(), // Sửa lại tên cột
+                            CreatedAtDonHang = Convert.ToDateTime(reader["created_atDonHang"]),
+                        });
+                    }
                 }
-                return null;
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi tìm khách hàng: " + ex.Message);
-            }
+
+            return LichSuDonHangInfos;
         }
 
-        // Phương thức lấy danh sách hóa đơn của một khách hàng
-        public static List<HoaDon> GetHoaDonByKhachHangId(string maKhachHang)
+        public static string searchTenKH(string text)
         {
-            try
+            string query = @"
+            SELECT
+                hoTen
+            FROM
+                USERS
+            WHERE
+                id = @UserId";
+            string s = null;
+            using (SqlCommand cmd = new SqlCommand(query, Database.GetConnection()))
             {
-                List<HoaDon> hoaDons = new List<HoaDon>();
-                string query = "SELECT * FROM HoaDon WHERE MaKH = @maKH ORDER BY NgayLap DESC";
-                SqlParameter[] parameters = new SqlParameter[]
+                cmd.Parameters.AddWithValue("@UserId", text);
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    new SqlParameter("@maKH", maKhachHang)
-                };
-
-                DataTable data = Database.ExecuteQuery(query, parameters);
-                foreach (DataRow row in data.Rows)
-                {
-                    HoaDon hoaDon = new HoaDon
+                    while (reader.Read())
                     {
-                        MaHD = row["MaHD"].ToString(),
-                        NgayLap = Convert.ToDateTime(row["NgayLap"]),
-                        TongTien = Convert.ToDecimal(row["TongTien"]),
-                        MaKH = row["MaKH"].ToString()
-                    };
-                    hoaDons.Add(hoaDon);
+                        s = reader["hoTen"].ToString();
+                    }
                 }
-                return hoaDons;
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi lấy danh sách hóa đơn: " + ex.Message);
-            }
+
+            return s;
         }
 
-        // Phương thức lấy chi tiết các sản phẩm trong một hóa đơn
-        public static List<ChiTietHoaDon> GetChiTietHoaDon(string maHoaDon)
+        public static List<ChiTietDonHang> SearchChiTietDonHangs(string text)
         {
-            try
+            List<ChiTietDonHang> ChiTietDonHangs = new List<ChiTietDonHang>();
+            string query = @"
+            SELECT
+                ctdh.*, -- Select all columns from CHITIETDONHANG
+                sp.tenSp -- Select tenSp from SANPHAM
+            FROM
+                CHITIETDONHANG ctdh
+            INNER JOIN
+                SANPHAM sp ON ctdh.maSp = sp.maSp
+            WHERE
+                ctdh.maDonHang = @text";
+            using (SqlCommand cmd = new SqlCommand(query, Database.GetConnection()))
             {
-                List<ChiTietHoaDon> chiTiets = new List<ChiTietHoaDon>();
-                string query = @"SELECT ct.*, sp.TenSP 
-                                FROM ChiTietHoaDon ct 
-                                JOIN SanPham sp ON ct.MaSP = sp.MaSP 
-                                WHERE ct.MaHD = @maHD";
-                SqlParameter[] parameters = new SqlParameter[]
+                cmd.Parameters.AddWithValue("@text", text);
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    new SqlParameter("@maHD", maHoaDon)
-                };
-
-                DataTable data = Database.ExecuteQuery(query, parameters);
-                foreach (DataRow row in data.Rows)
-                {
-                    ChiTietHoaDon chiTiet = new ChiTietHoaDon
+                    while (reader.Read())
                     {
-                        MaHD = row["MaHD"].ToString(),
-                        MaSP = row["MaSP"].ToString(),
-                        TenSP = row["TenSP"].ToString(),
-                        SoLuong = Convert.ToInt32(row["SoLuong"]),
-                        DonGia = Convert.ToDecimal(row["DonGia"]),
-                        ThanhTien = Convert.ToDecimal(row["ThanhTien"])
-                    };
-                    chiTiets.Add(chiTiet);
+                        ChiTietDonHangs.Add(new ChiTietDonHang
+                        {
+                            Id = reader["id"].ToString(), // Sửa lại tên cột
+                            MaDonHang = reader["maDonHang"].ToString(), // Sửa lại tên cột
+                            MaSp = reader["maSp"].ToString(),
+                            TenSp = reader["tenSp"].ToString(),
+                            SoLuong = Convert.ToInt32(reader["soLuong"]),
+                            GiaBan = Convert.ToInt64(reader["giaBan"]),
+                        });
+                    }
                 }
-                return chiTiets;
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi lấy chi tiết hóa đơn: " + ex.Message);
-            }
-        }
 
-        // Phương thức lấy tổng chi tiêu của khách hàng
-        public static decimal GetTongChiTieu(string maKhachHang)
-        {
-            try
-            {
-                string query = "SELECT SUM(TongTien) FROM HoaDon WHERE MaKH = @maKH";
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@maKH", maKhachHang)
-                };
-
-                object result = Database.ExecuteScalar(query, parameters);
-                if (result != null && result != DBNull.Value)
-                {
-                    return Convert.ToDecimal(result);
-                }
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi tính tổng chi tiêu: " + ex.Message);
-            }
-        }
-
-        // Phương thức lấy số lượng hóa đơn của khách hàng
-        public static int GetSoLuongHoaDon(string maKhachHang)
-        {
-            try
-            {
-                string query = "SELECT COUNT(*) FROM HoaDon WHERE MaKH = @maKH";
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@maKH", maKhachHang)
-                };
-
-                object result = Database.ExecuteScalar(query, parameters);
-                if (result != null && result != DBNull.Value)
-                {
-                    return Convert.ToInt32(result);
-                }
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi đếm số lượng hóa đơn: " + ex.Message);
-            }
-        }
-
-        // Phương thức lấy danh sách sản phẩm đã mua của khách hàng
-        public static List<SanPhamDaMua> GetSanPhamDaMua(string maKhachHang)
-        {
-            try
-            {
-                List<SanPhamDaMua> sanPhams = new List<SanPhamDaMua>();
-                string query = @"SELECT sp.MaSP, sp.TenSP, SUM(ct.SoLuong) as TongSoLuong, 
-                                SUM(ct.ThanhTien) as TongThanhTien 
-                                FROM HoaDon hd 
-                                JOIN ChiTietHoaDon ct ON hd.MaHD = ct.MaHD 
-                                JOIN SanPham sp ON ct.MaSP = sp.MaSP 
-                                WHERE hd.MaKH = @maKH 
-                                GROUP BY sp.MaSP, sp.TenSP 
-                                ORDER BY TongSoLuong DESC";
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@maKH", maKhachHang)
-                };
-
-                DataTable data = Database.ExecuteQuery(query, parameters);
-                foreach (DataRow row in data.Rows)
-                {
-                    SanPhamDaMua sanPham = new SanPhamDaMua
-                    {
-                        MaSP = row["MaSP"].ToString(),
-                        TenSP = row["TenSP"].ToString(),
-                        TongSoLuong = Convert.ToInt32(row["TongSoLuong"]),
-                        TongThanhTien = Convert.ToDecimal(row["TongThanhTien"])
-                    };
-                    sanPhams.Add(sanPham);
-                }
-                return sanPhams;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi lấy danh sách sản phẩm đã mua: " + ex.Message);
-            }
+            return ChiTietDonHangs;
         }
     }
 }

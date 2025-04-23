@@ -2,7 +2,7 @@
 
 namespace LapStore.Model
 {
-    internal class ChiTietDonHang
+    public class ChiTietDonHang
     {
         public string Id { get; set; }
         public string MaDonHang { get; set; }

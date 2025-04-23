@@ -29,20 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(khachHangUserControl));
             this.btn_newID = new Guna.UI2.WinForms.Guna2CircleButton();
             this.txt_sdt = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvUser = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.hinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sdt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtDiaChi = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
@@ -69,6 +62,14 @@
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.cbb_role = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.hinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sdt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageSp)).BeginInit();
             this.guna2GradientPanel1.SuspendLayout();
@@ -120,21 +121,21 @@
             // dgvUser
             // 
             this.dgvUser.AllowUserToAddRows = false;
-            this.dgvUser.AllowUserToOrderColumns = true;
+            this.dgvUser.AllowUserToDeleteRows = false;
             this.dgvUser.AllowUserToResizeColumns = false;
             this.dgvUser.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.dgvUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dgvUser.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(171)))), ((int)(((byte)(74)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(171)))), ((int)(((byte)(74)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(171)))), ((int)(((byte)(74)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(171)))), ((int)(((byte)(74)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUser.ColumnHeadersHeight = 30;
             this.dgvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -144,15 +145,16 @@
             this.email,
             this.pass,
             this.sdt,
-            this.diachi});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUser.DefaultCellStyle = dataGridViewCellStyle9;
+            this.diachi,
+            this.role});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUser.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUser.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.dgvUser.Location = new System.Drawing.Point(19, 44);
             this.dgvUser.MultiSelect = false;
@@ -184,51 +186,6 @@
             this.dgvUser.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.dgvUser.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellClick);
-            // 
-            // hinhAnh
-            // 
-            this.hinhAnh.HeaderText = "Hình ảnh";
-            this.hinhAnh.MinimumWidth = 30;
-            this.hinhAnh.Name = "hinhAnh";
-            this.hinhAnh.ReadOnly = true;
-            this.hinhAnh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.hinhAnh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // ten
-            // 
-            this.ten.HeaderText = "Tên người dùng";
-            this.ten.Name = "ten";
-            this.ten.ReadOnly = true;
-            // 
-            // email
-            // 
-            this.email.HeaderText = "Email";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            // 
-            // pass
-            // 
-            this.pass.HeaderText = "Mật khẩu";
-            this.pass.Name = "pass";
-            this.pass.ReadOnly = true;
-            // 
-            // sdt
-            // 
-            this.sdt.HeaderText = "Số điện thoại";
-            this.sdt.Name = "sdt";
-            this.sdt.ReadOnly = true;
-            // 
-            // diachi
-            // 
-            this.diachi.HeaderText = "Địa chỉ";
-            this.diachi.Name = "diachi";
-            this.diachi.ReadOnly = true;
             // 
             // txtPass
             // 
@@ -648,6 +605,57 @@
             this.label6.TabIndex = 98;
             this.label6.Text = "Vai trò";
             // 
+            // hinhAnh
+            // 
+            this.hinhAnh.HeaderText = "Hình ảnh";
+            this.hinhAnh.MinimumWidth = 30;
+            this.hinhAnh.Name = "hinhAnh";
+            this.hinhAnh.ReadOnly = true;
+            this.hinhAnh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.hinhAnh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // ten
+            // 
+            this.ten.HeaderText = "Tên người dùng";
+            this.ten.Name = "ten";
+            this.ten.ReadOnly = true;
+            // 
+            // email
+            // 
+            this.email.HeaderText = "Email";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            // 
+            // pass
+            // 
+            this.pass.HeaderText = "Mật khẩu";
+            this.pass.Name = "pass";
+            this.pass.ReadOnly = true;
+            // 
+            // sdt
+            // 
+            this.sdt.HeaderText = "Số điện thoại";
+            this.sdt.Name = "sdt";
+            this.sdt.ReadOnly = true;
+            // 
+            // diachi
+            // 
+            this.diachi.HeaderText = "Địa chỉ";
+            this.diachi.Name = "diachi";
+            this.diachi.ReadOnly = true;
+            // 
+            // role
+            // 
+            this.role.HeaderText = "Role";
+            this.role.Name = "role";
+            this.role.ReadOnly = true;
+            // 
             // khachHangUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -721,6 +729,8 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
         private Guna.UI2.WinForms.Guna2Button guna2Button7;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private Guna.UI2.WinForms.Guna2ComboBox cbb_role;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewImageColumn hinhAnh;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn ten;
@@ -728,7 +738,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pass;
         private System.Windows.Forms.DataGridViewTextBoxColumn sdt;
         private System.Windows.Forms.DataGridViewTextBoxColumn diachi;
-        private Guna.UI2.WinForms.Guna2ComboBox cbb_role;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn role;
     }
 }

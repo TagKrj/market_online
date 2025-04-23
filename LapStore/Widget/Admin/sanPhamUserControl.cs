@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LapStore.Controller;
 using LapStore.Model;
 
 namespace LapStore.Widget
@@ -37,7 +38,7 @@ namespace LapStore.Widget
 
         private void LapTop_Load(object sender, EventArgs e)
         {
-            txtMaDm.Text = MADANHMUC;
+            cboDanhMuc.Text = MADANHMUC;
             LoadingData(MADANHMUC);
             // dgvSP.DefaultCellStyle.ForeColor = Color.Black;
             // txtMaDm.Enabled = false;
@@ -76,7 +77,7 @@ namespace LapStore.Widget
                     sp.MoTa, // Mô tả
                     sp.GiaNhap, // Giá nhập
                     sp.GiaBan, // Giá bán
-                    // sp.GiaChuaBan, // Giá bán thật
+                    sp.GiaChuaBan, // Giá Chưa bán
                     sp.SoLuong, // Số lượng
                     sp.GiamGia, // Giảm giá
                     sp.NhaCungCap, // Nhà cung cấp
@@ -86,6 +87,40 @@ namespace LapStore.Widget
                 // Lưu đường dẫn vào thuộc tính Tag của ô hình ảnh
                 dgvSP.Rows[rowIndex].Cells["HinhAnh"].Tag = sp.HinhAnh;
             }
+
+            // Lấy ra danh sách danh mục
+            List<DanhMuc> danhMucs = DanhMucController.getAllDanhMucs();
+            Dictionary<string, string> danhMucDict = new Dictionary<string, string>();
+            foreach (DanhMuc dm in danhMucs)
+            {
+                danhMucDict.Add(dm.id, dm.tenDanhMuc);
+            }
+
+            cboDanhMuc.DataSource = new BindingSource(danhMucDict, null);
+            cboDanhMuc.DisplayMember = "Value";
+            cboDanhMuc.ValueMember = "Key";
+            // lấy ra danh sách nhà cung cấp
+            List<NhaCungCap> nhaCungCaps = NhaCungCapController.getAllNhaCungCaps();
+            Dictionary<string, string> nhaCungCapDict = new Dictionary<string, string>();
+            foreach (NhaCungCap ncc in nhaCungCaps)
+            {
+                nhaCungCapDict.Add(ncc.id, ncc.tenNhaCungCap);
+            }
+
+            cboNcc.DataSource = new BindingSource(nhaCungCapDict, null);
+            cboNcc.DisplayMember = "Value";
+            cboNcc.ValueMember = "Key";
+            // lấy ra danh sách giảm giá
+            List<GiamGia> giamGias = GiamGiaController.getAllGiamGias();
+            Dictionary<string, string> giamGiaDict = new Dictionary<string, string>();
+            foreach (GiamGia gg in giamGias)
+            {
+                giamGiaDict.Add(gg.id, gg.tenGiamGia);
+            }
+
+            cboGiamGia.DataSource = new BindingSource(giamGiaDict, null);
+            cboGiamGia.DisplayMember = "Value";
+            cboGiamGia.ValueMember = "Key";
         }
 
 
@@ -105,13 +140,16 @@ namespace LapStore.Widget
             var sanPham = new SanPham
             {
                 MaSp = txtMaSp.Text,
-                MaDm = txtMaDm.Text,
+                MaDm = cboDanhMuc.SelectedValue.ToString(),
                 TenSp = txtTenSP.Text,
                 HinhAnh = imagePath,
                 MoTa = txtMoTa.Text,
                 GiaNhap = long.Parse(txtGiaNhap.Text),
                 GiaBan = long.Parse(txtGiaBan.Text),
+                GiaChuaBan = long.Parse(txtGiaChuaBan.Text),
                 SoLuong = int.Parse(txtSoLuong.Text),
+                GiamGia = cboGiamGia.SelectedValue.ToString(),
+                NhaCungCap = cboNcc.SelectedValue.ToString(),
                 CreatedAt = DateTime.Now,
             };
 
@@ -131,13 +169,17 @@ namespace LapStore.Widget
 
                 // Lấy thông tin từ các ô
                 txtMaSp.Text = row.Cells["maSp"].Value?.ToString().Trim();
-                txtMaDm.Text = row.Cells["maDm"].Value?.ToString().Trim();
+                cboDanhMuc.Text = row.Cells["maDm"].Value?.ToString().Trim();
                 txtTenSP.Text = row.Cells["tenSp"].Value?.ToString().Trim();
                 txtMoTa.Text = row.Cells["moTa"].Value?.ToString().Trim();
                 txtGiaNhap.Text = row.Cells["giaNhap"].Value?.ToString().Trim();
                 txtGiaBan.Text = row.Cells["giaBan"].Value?.ToString().Trim();
+                txtGiaChuaBan.Text = row.Cells["giaChuaBan"].Value?.ToString().Trim();
                 txtSoLuong.Text = row.Cells["soLuong"].Value?.ToString().Trim();
                 dateCreateAt.Value = DateTime.Parse(row.Cells["createAt"].Value?.ToString());
+                cboDanhMuc.SelectedItem = row.Cells["maDm"].Value?.ToString().Trim();
+                cboNcc.SelectedItem = row.Cells["nhaCungCap"].Value?.ToString().Trim();
+                cboGiamGia.SelectedItem = row.Cells["giamGia"].Value?.ToString().Trim();
 
                 // Hiển thị hình ảnh lên PictureBox
                 try
@@ -222,13 +264,16 @@ namespace LapStore.Widget
             var sanPham = new SanPham
             {
                 MaSp = txtMaSp.Text,
-                MaDm = txtMaDm.Text,
+                MaDm = cboDanhMuc.SelectedValue.ToString(),
                 TenSp = txtTenSP.Text,
                 HinhAnh = imagePath,
                 MoTa = txtMoTa.Text,
                 GiaNhap = long.Parse(txtGiaNhap.Text),
                 GiaBan = long.Parse(txtGiaBan.Text),
+                GiaChuaBan = long.Parse(txtGiaChuaBan.Text),
                 SoLuong = int.Parse(txtSoLuong.Text),
+                GiamGia = cboGiamGia.SelectedValue.ToString(),
+                NhaCungCap = cboNcc.SelectedValue.ToString(),
                 CreatedAt = DateTime.Now,
             };
 
@@ -242,7 +287,7 @@ namespace LapStore.Widget
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
             string keyword = txtTimKiem.Text.Trim();
-            string maDm = txtMaDm.Text.Trim();
+            string maDm = cboDanhMuc.Text.Trim();
 
             List<SanPham> SanPhams = SanPhamController.SearchSanPham(keyword, maDm);
             dgvSP.Rows.Clear();
@@ -275,7 +320,7 @@ namespace LapStore.Widget
                     sp.MoTa, // Mô tả
                     sp.GiaNhap, // Giá nhập
                     sp.GiaBan, // Giá bán
-                    // sp.GiaChuaBan, // Giá bán thật
+                    sp.GiaChuaBan, // Giá bán thật
                     sp.SoLuong, // Số lượng
                     sp.GiamGia, // Giảm giá
                     sp.NhaCungCap, // Nhà cung cấp
@@ -305,6 +350,23 @@ namespace LapStore.Widget
                     imageSp.Image = new Bitmap(ofd.FileName);
                     imageSp.Tag = ofd.FileName; // Lưu đường dẫn vào Tag
                 }
+            }
+        }
+
+        private void txtGiaChuaBan_TextChanged(object sender, EventArgs e)
+        {
+            txtGiaBan.Text = txtGiaChuaBan.Text == ""
+                ? "0"
+                : (int.Parse(txtGiaChuaBan.Text) * (100 - long.Parse(txtSoGiamGia.Text)) / 100).ToString();
+        }
+
+        private void cboGiamGia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string text = cboGiamGia.SelectedValue.ToString();
+            List<GiamGia> giamGias = GiamGiaController.SearchGiamGias(text);
+            foreach (var giamGia in giamGias)
+            {
+                txtSoGiamGia.Text = giamGia.soGiamGia;
             }
         }
     }

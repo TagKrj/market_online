@@ -197,8 +197,7 @@ namespace LapStore.Controller
                     try
                     {
                         // 1. Lấy chi tiết đơn hàng
-                        string queryCT =
-                            "SELECT maSp, soLuong, giaBan FROM CHITIETDONHANG WHERE maDonHang = @maDonHang";
+                        string queryCT = "SELECT maSp, soLuong, giaBan FROM CHITIETDONHANG WHERE maDonHang = @maDonHang";
                         var sanPhamList = new List<(string maSp, int soLuong, long giaBan)>();
 
                         using (SqlCommand cmd = new SqlCommand(queryCT, conn, tran))
@@ -216,12 +215,8 @@ namespace LapStore.Controller
                             }
                         }
 
-                        // 2. Tạo trước các ID thống kê
-                        var listIdThongKe = new List<string>();
-                        for (int i = 0; i < sanPhamList.Count; i++)
-                        {
-                            listIdThongKe.Add(ThongKeController.GenerateNewThongKeId());
-                        }
+                        // 2. Tạo trước danh sách ID thống kê (duy nhất)
+                        var listIdThongKe = ThongKeController.GenerateThongKeIds(sanPhamList.Count);
 
                         // 3. Xử lý từng sản phẩm
                         for (int i = 0; i < sanPhamList.Count; i++)
@@ -230,17 +225,14 @@ namespace LapStore.Controller
                             long giaNhap = 0;
 
                             // Lấy giá nhập
-                            using (SqlCommand getGiaNhap =
-                                   new SqlCommand("SELECT giaNhap FROM SANPHAM WHERE maSp = @maSp", conn, tran))
+                            using (SqlCommand getGiaNhap = new SqlCommand("SELECT giaNhap FROM SANPHAM WHERE maSp = @maSp", conn, tran))
                             {
                                 getGiaNhap.Parameters.AddWithValue("@maSp", sp.maSp);
                                 giaNhap = Convert.ToInt64(getGiaNhap.ExecuteScalar());
                             }
 
                             // Cập nhật tồn kho
-                            using (SqlCommand updateSL = new SqlCommand(
-                                       "UPDATE SANPHAM SET soLuong = soLuong - @soLuong WHERE maSp = @maSp", conn,
-                                       tran))
+                            using (SqlCommand updateSL = new SqlCommand("UPDATE SANPHAM SET soLuong = soLuong - @soLuong WHERE maSp = @maSp", conn, tran))
                             {
                                 updateSL.Parameters.AddWithValue("@soLuong", sp.soLuong);
                                 updateSL.Parameters.AddWithValue("@maSp", sp.maSp);
@@ -249,8 +241,8 @@ namespace LapStore.Controller
 
                             // Thêm vào thống kê
                             using (SqlCommand insertTK = new SqlCommand(@"
-                        INSERT INTO THONGKE(id, maDonHang, maSp, soLuong, doanhThu, loiNhuan)
-                        VALUES(@id, @maDonHang, @maSp, @soLuong, @doanhThu, @loiNhuan)", conn, tran))
+                INSERT INTO THONGKE(id, maDonHang, maSp, soLuong, doanhThu, loiNhuan)
+                VALUES(@id, @maDonHang, @maSp, @soLuong, @doanhThu, @loiNhuan)", conn, tran))
                             {
                                 insertTK.Parameters.AddWithValue("@id", listIdThongKe[i]);
                                 insertTK.Parameters.AddWithValue("@maDonHang", idDonHang);

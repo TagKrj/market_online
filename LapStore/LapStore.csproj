@@ -132,6 +132,7 @@
     <Compile Include="Model\DonHang.cs" />
     <Compile Include="Model\GiamGia.cs" />
     <Compile Include="Model\GioHang.cs" />
+    <Compile Include="Model\LichSuDonHangInfo.cs" />
     <Compile Include="Model\NhaCungCap.cs" />
     <Compile Include="Model\ThongKe.cs" />
     <Compile Include="Model\Models.cs" />

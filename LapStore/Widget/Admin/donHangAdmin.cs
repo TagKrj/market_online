@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,7 +85,11 @@ namespace LapStore.Widget.Admin
                 txtTongTien.Text = row.Cells["tongtien"].Value?.ToString();         // Tổng tiền
                 txtPhuongThuc.Text = row.Cells["phuongthuc"].Value?.ToString();       // Phương thức
                 cbb_trangThai.Text = row.Cells["trangthai"].Value?.ToString();        // Trạng thái
-                dateCreateAt.Value = DateTime.Parse(row.Cells["createat"].Value?.ToString());
+                //  = DateTime.Parse(row.Cells["createat"].Value?.ToString());
+                string inputFormat = "dd/MM/yyyy HH:mm";
+
+                dateCreateAt.Value = DateTime.ParseExact(row.Cells["createat"].Value?.ToString(), inputFormat, CultureInfo.InvariantCulture);
+
             }
         }
 

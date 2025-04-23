@@ -30,6 +30,7 @@ namespace LapStore.Widget
             txtDiaChi.Clear();
             txt_sdt.Clear();
             cbb_role.SelectedValue = 1;
+            
             imageSp.Image = null;
             imageSp.BackColor = Color.Red;
         }
@@ -96,7 +97,8 @@ namespace LapStore.Widget
             LoadingData();
             LoadComboBoxRole();
             cbb_role.SelectedValue = 1;
-            cbb_role.Enabled = false;
+            cbb_role.Visible = false;
+            label6.Visible = false;
             // dgvUser.DefaultCellStyle.ForeColor = Color.Black;
         }
 
@@ -113,8 +115,8 @@ namespace LapStore.Widget
                 txtPass.Text = row.Cells["pass"].Value?.ToString().Trim();
                 txt_sdt.Text = row.Cells["sdt"].Value?.ToString().Trim();
                 txtDiaChi.Text = row.Cells["diachi"].Value?.ToString().Trim();
-                string roleText = row.Cells["role"].Value?.ToString().Trim();
-                cbb_role.SelectedValue = roleText == "USER" ? 1 : 0; // USER -> 1, ADMIN -> 0
+                // string roleText = row.Cells["role"].Value?.ToString().Trim();
+                // cbb_role.SelectedValue = roleText == "USER" ? 1 : 0; // USER -> 1, ADMIN -> 0
 
                 // Hiển thị hình ảnh lên PictureBox
                 try

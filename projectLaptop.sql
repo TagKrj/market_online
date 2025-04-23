@@ -72,7 +72,7 @@ CREATE TABLE DONHANG (
     created_at DATETIME DEFAULT GETDATE(),
 	sdt char(10),
     FOREIGN KEY (maUser) REFERENCES USERS(id)
-	)
+	);
 -- Bảng CHITIETDONHANG (Lưu danh sách sản phẩm trong đơn)
 CREATE TABLE CHITIETDONHANG (
     id CHAR(10) PRIMARY KEY,
