@@ -1,5 +1,6 @@
 ﻿using LapStore;
 using LapStore.Model;
+using LapStore.Widget.User;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -49,7 +50,7 @@ namespace LapStore
                 {
                     if (!string.IsNullOrEmpty(maDanhMuc)) // Nếu có mã danh mục, thêm tham số vào câu lệnh
                     {
-                        cmd.Parameters.AddWithValue("@maDanhMuc", maDanhMuc);
+                        cmd.Parameters.AddWithValue("@maDanhMuc", "%" + maDanhMuc + "%");
                     }
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -65,10 +66,10 @@ namespace LapStore
                                 MoTa = reader["moTa"].ToString(),
                                 GiaNhap = (long)reader["giaNhap"],
                                 GiaBan = (long)reader["giaBan"],
-                                // GiaThat = (long)reader["giaThat"],
+                                GiaChuaBan = (long)reader["GiaChuaBan"],
                                 SoLuong = (int)reader["soLuong"],
-                                // GiamGia = reader["maGiamGia"].ToString(),
-                                // NhaCungCap = reader["maNhaCungCap"].ToString(),
+                                GiamGia = reader["maGiamGia"].ToString(),
+                                NhaCungCap = reader["maNhaCungCap"].ToString(),
                                 CreatedAt = (DateTime)reader["created_at"]
                             });
                         }
@@ -90,7 +91,7 @@ namespace LapStore
                 string query = "SELECT * FROM SANPHAM WHERE maDm = @maDm";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@maDm", maDm);
+                    cmd.Parameters.AddWithValue("@maDm", "%" + maDm + "%");
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -104,10 +105,10 @@ namespace LapStore
                                 MoTa = reader["moTa"].ToString(),
                                 GiaNhap = (long)reader["giaNhap"],
                                 GiaBan = (long)reader["giaBan"],
-                                // GiaThat = (long)reader["giaThat"],
+                                GiaChuaBan = (long)reader["GiaChuaBan"],
                                 SoLuong = (int)reader["soLuong"],
-                                // GiamGia = reader["maGiamGia"].ToString(),
-                                // NhaCungCap = reader["maNhaCungCap"].ToString(),
+                                GiamGia = reader["maGiamGia"].ToString(),
+                                NhaCungCap = reader["maNhaCungCap"].ToString(),
                                 CreatedAt = (DateTime)reader["created_at"]
                             });
                         }
@@ -125,8 +126,8 @@ namespace LapStore
             using (SqlConnection conn = Database.GetConnection())
             {
                 string query =
-                    "INSERT INTO SANPHAM(maSp, maDm, tenSp, hinhAnh, moTa, giaNhap, giaBan, soLuong, giaThat, maGiamGia, maNhaCungCap) " +
-                    "VALUES (@maSp, @maDm, @tenSp, @hinhAnh, @moTa, @giaNhap, @giaBan, @soLuong, @giaThat, @maGiamGia, @maNhaCungCap)";
+                    "INSERT INTO SANPHAM(maSp, maDm, tenSp, hinhAnh, moTa, giaNhap, giaBan, soLuong, GiaChuaBan, maGiamGia, maNhaCungCap) " +
+                    "VALUES (@maSp, @maDm, @tenSp, @hinhAnh, @moTa, @giaNhap, @giaBan, @soLuong, @GiaChuaBan, @maGiamGia, @maNhaCungCap)";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -137,9 +138,9 @@ namespace LapStore
                     cmd.Parameters.AddWithValue("@moTa", sanPham.MoTa);
                     cmd.Parameters.AddWithValue("@giaNhap", sanPham.GiaNhap);
                     cmd.Parameters.AddWithValue("@giaBan", sanPham.GiaBan);
-                    // cmd.Parameters.AddWithValue("@soLuong", sanPham.SoLuong);
-                    // cmd.Parameters.AddWithValue("@giaThat", sanPham.GiaThat);
-                    // cmd.Parameters.AddWithValue("@maGiamGia", sanPham.GiamGia);
+                    cmd.Parameters.AddWithValue("@soLuong", sanPham.SoLuong);
+                    cmd.Parameters.AddWithValue("@GiaChuaBan", sanPham.GiaChuaBan);
+                    cmd.Parameters.AddWithValue("@maGiamGia", sanPham.GiamGia);
                     cmd.Parameters.AddWithValue("@maNhaCungCap", sanPham.NhaCungCap);
                     cmd.ExecuteNonQuery();
                 }
@@ -152,7 +153,7 @@ namespace LapStore
             using (SqlConnection conn = Database.GetConnection())
             {
                 string query = "UPDATE SANPHAM SET maDm = @maDm, tenSp = @tenSp, hinhAnh = @hinhAnh, moTa = @moTa, " +
-                               "giaNhap = @giaNhap, giaBan = @giaBan, soLuong = @soLuong, giaThat = @giaThat, maGiamGia = @maGiamGia, maNhaCungCap = @maNhaCungCap WHERE maSp = @maSp";
+                               "giaNhap = @giaNhap, giaBan = @giaBan, soLuong = @soLuong, GiaChuaBan = @GiaChuaBan, maGiamGia = @maGiamGia, maNhaCungCap = @maNhaCungCap WHERE maSp = @maSp";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -164,7 +165,7 @@ namespace LapStore
                     cmd.Parameters.AddWithValue("@giaNhap", sanPham.GiaNhap);
                     cmd.Parameters.AddWithValue("@giaBan", sanPham.GiaBan);
                     cmd.Parameters.AddWithValue("@soLuong", sanPham.SoLuong);
-                    cmd.Parameters.AddWithValue("@giaThat", sanPham.GiaThat);
+                    cmd.Parameters.AddWithValue("@GiaChuaBan", sanPham.GiaChuaBan);
                     cmd.Parameters.AddWithValue("@maGiamGia", sanPham.GiamGia);
                     cmd.Parameters.AddWithValue("@maNhaCungCap", sanPham.NhaCungCap);
                     cmd.ExecuteNonQuery();
@@ -260,10 +261,10 @@ namespace LapStore
                                 MoTa = reader["moTa"].ToString(),
                                 GiaNhap = (long)reader["giaNhap"],
                                 GiaBan = (long)reader["giaBan"],
-                                // GiaThat = (long)reader["giaThat"],
+                                GiaChuaBan = (long)reader["GiaChuaBan"],
                                 SoLuong = (int)reader["soLuong"],
-                                // GiamGia = reader["maGiamGia"].ToString(),
-                                // NhaCungCap = reader["maNhaCungCap"].ToString(),
+                                GiamGia = reader["maGiamGia"].ToString(),
+                                NhaCungCap = reader["maNhaCungCap"].ToString(),
                                 CreatedAt = (DateTime)reader["created_at"]
                             });
                         }

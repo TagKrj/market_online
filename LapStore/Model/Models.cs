@@ -42,13 +42,13 @@ namespace LapStore.Model
         public decimal TongThanhTien { get; set; }
     }
 
-    public class DanhMuc
-    {
-        public int id { get; set; }
-        public string maDanhMuc { get; set; }
-        public string tenDanhMuc { get; set; }
-        public string moTa { get; set; }
-    }
+    // public class DanhMuc
+    // {
+    //     public int id { get; set; }
+    //     public string maDanhMuc { get; set; }
+    //     public string tenDanhMuc { get; set; }
+    //     public string moTa { get; set; }
+    // }
 
     public class ThongKeDoanhThuSanPham
     {

@@ -5,6 +5,7 @@
 
 create database projectLap
 use projectLap
+--drop database projectLap
 CREATE TABLE USERS (
     id char(10) PRIMARY KEY,
     hoTen NVARCHAR(255),
@@ -20,7 +21,17 @@ CREATE TABLE DANHMUC (
     id char(10) PRIMARY KEY,
     tenDanhMuc NVARCHAR(255)
 );
+create table GIAMGIA(
+	maGiamGia CHAR(10) PRIMARY KEY,
+	tenGiamGia NVARCHAR(255),
+	soGiamGia int,
+);
 
+create table NHACUNGCAP(
+	maNhaCungCap char(10) PRIMARY KEY,
+	tenNhaCungCap NVARCHAR(255),
+	diaChi NVARCHAR(255)
+);
 CREATE TABLE SANPHAM (
     maSp char(10) PRIMARY KEY,
     maDm char(10),
@@ -29,13 +40,15 @@ CREATE TABLE SANPHAM (
     moTa NVARCHAR(MAX),
     giaNhap BIGINT,
     giaBan BIGINT,
-	giaThat BIGINT,
+	giaChuaBan BIGINT,
     soLuong INT,
 	maGiamGia char(10),
 	maNhaCungCap char(10),
     created_at DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (maDm) REFERENCES DANHMUC(id),
-    CHECK (giaNhap < giaBan)
+	FOREIGN KEY (maGiamGia) REFERENCES GIAMGIA(maGiamGia),
+	FOREIGN KEY (maNhaCungCap) REFERENCES NHACUNGCAP(maNhaCungCap),
+    CHECK (giaNhap < giaChuaBan)
 );
 -- xóa mấy bảng GIOHANG, DONHANG, THONGKE cũ đi xong mới add mấy bảng mới này vào
 CREATE TABLE GIOHANG (
@@ -83,17 +96,20 @@ CREATE TABLE THONGKE (
     FOREIGN KEY (maDonHang) REFERENCES DONHANG(id),
     FOREIGN KEY (maSp) REFERENCES SANPHAM(maSp)
 );
-create table GIAMGIA(
-	maGiamGia CHAR(10) PRIMARY KEY,
-	tenGiamGia NVARCHAR(255),
-	soGiamGia int,
-);
 
-create table NHACUNGCAP(
-	maNhaCungCap char(10) PRIMARY KEY,
-	tenNhaCungCap NVARCHAR(255),
-	diaChi NVARCHAR(255)
-);
+INSERT INTO GIAMGIA(maGiamGia, tenGiamGia,soGiamGia)
+VALUES 
+    ('GG001', N'Sinh nhật cửa hàng', 5),
+    ('GG002', N'Xuân',10),
+    ('GG003', N'Hạ',15),
+	('GG004', N'Thu',20),
+    ('GG005', N'Đông',25);
+INSERT INTO NHACUNGCAP(maNhaCungCap, tenNhaCungCap,diaChi)
+VALUES 
+    ('NCC001', N'Bách Hóa Xanh', N'Thanh Hóa'),
+    ('NCC002', N'Hồng Hà',N'Quảng Ninh'),
+    ('NCC003', N'Vin', N'Hà Nội'),
+	('NCC004', N'Nhãn Lồng', N'Hưng Yên');
 INSERT INTO DANHMUC(id, tenDanhMuc)
 VALUES 
     ('DM001', N'LapTop'),
@@ -110,7 +126,7 @@ VALUES
 --INSERT INTO SANPHAM (maSp, maDm, tenSp, hinhAnh, moTa, giaNhap, giaBan, soLuong)
 --VALUES 
 --('SP001', 'DM001', N'tenSp', 'D:\DataC#\image\anh_o_day', N'moTa', 20000000, 25000000, 15);
-INSERT INTO SANPHAM (maSp, maDm, tenSp, hinhAnh, moTa, giaNhap, giaBan, soLuong)
+INSERT INTO SANPHAM (maSp, maDm, tenSp, hinhAnh, moTa, giaNhap, giaBan, soLuong ,giaChuaBan, maGiamGia, maNhaCungCap)
 VALUES 
 ('SP001', 'DM001', N'Laptop Asus Gaming TUF FX507VU-LP315W (Geforce RTX4050 6GB/i7 13620H/16GB RAM/512GB SSD/15.6 FHD 144hz/Win11/Xám)', 'D:\DataC#\image\84717_laptop_asus_gaming_tuf_fx507vu_lp315w__3_.jpg', N'Bộ vi xử lý: Intel Core i7-13620H
 Bộ nhớ: Ram 16GB (2x 8GB) SO-DIMM DDR5 (Tối đa 32GB)
@@ -118,14 +134,16 @@ Bộ nhớ: Ram 16GB (2x 8GB) SO-DIMM DDR5 (Tối đa 32GB)
 VGA: NVIDIA® GeForce RTX™ 4050 6GB
 Màn hình: 15.6" FHD (1920 x 1080) IPS, 144Hz, Wide View, 250nits, Narrow Bezel, Non-Glare with 72% NTSC, 100% sRGB, 75.35% Adobe RGB, G-Sync
 Màu: Xám
-Hệ điều hành: Windows 11 Home', 20000000, 25000000, 15),
+Hệ điều hành: Windows 11 Home', 20000000, 25000000, 15,30000000,'GG001','NCC001'),
+
 ('SP002', 'DM001', N'Asus Vivobook 14 OLED A1405VA-KM095W (i5 13500H/16GB RAM/512GB SSD/14 2.8K Oled/Win11/Bạc/Chuột)', 'D:\DataC#\image\71159_ltau870.png', N'CPU: Intel Core i5-13500H (upto 4.7GHz, 18MB)
 RAM: 16GB (8GB onboard + 8gb cắm rời)
 Ổ cứng: 512GB M.2 NVMe™ PCIe® 3.0
 VGA: Intel Iris Xᵉ Graphics
 Màn hình: 2.8K (2880 x 1800) OLED 16:10, 90Hz, 100% DCI-P3, 600nits
 Màu sắc: Bạc
-OS: Windows 11 Home', 10000000, 15000000, 20),
+OS: Windows 11 Home', 10000000, 15000000, 20,30000000,'GG001','NCC001'),
+
 ('SP003', 'DM001', N'Hình ảnh chụp
 sản phẩm
 Video
@@ -138,14 +156,16 @@ RAM: 8GB
 VGA: Onboard
 Màn hình: 13.3 inch Retina IPS
 HĐH: Mac OS
-Màu: Xám', 10000000, 15000000, 20),
+Màu: Xám', 10000000, 15000000, 20,30000000,'GG001','NCC001'),
+
 ('SP004', 'DM001', N'Laptop Dell Inspiron 3520 (25P2312) (i5 1235U 16GB RAM/512GB SSD/15.6 inch FHD 120Hz/Win11/OfficeHS21/Bạc)', 'D:\DataC#\image\75901_laptop_dell_inspiron_3520__i5_1135g7_8gb_ram512gb_ssd15_6_inch_fhd_120hzubuntub___c___2_.jpg', N'CPU: Intel® Core™ i5 1235U
 RAM: 16HB (2x8GB) DDR4 2666 (Tối đa 16GB)
 Ổ cứng: 512GB SSD M.2 NVMe (Nâng cấp thay thế)
 VGA: Intel Iris Xe Graphics
 Màn hình: 15.6inch Full HD 1920 x 1080,IPS 120hz 250nits
 Màu: Bạc
-OS: Windows 11 Home', 10000000, 15000000, 20),
+OS: Windows 11 Home', 10000000, 15000000, 20,30000000,'GG001','NCC001'),
+
 ('SP005', 'DM001', N'Laptop Asus Gaming ROG Strix G614JV-N4369W (i7 13650HX/16GB RAM/1TB SSD/16 WUXGA 240hz/RTX 4060 8GB/Win11/Xám/Balo/Chuột)', 'D:\DataC#\image\88195_laptop_asus_gaming_rog_strix_g614jv_n4369w_i7_13650hx_16gb_ram_1tb_ssd_16_wuxga_240hz_rtx_4060_8gb_win11_xam_balo_chuot.jpg', N'Bộ vi xử lý: CPU Intel Core i7-13650HX (24MB, up to 4.90GHz)
 Bộ nhớ: RAM 16GB DDR5-4800 SO-DIMM
 Ổ cứng: SSD 1TB PCIe® 4.0 NVMe™ M.2
@@ -155,12 +175,12 @@ Pin: 4-cell 90WHrs
 RGB Keyboard
 Màu sắc: Eclipse Gray (Xám)
 Trọng lượng: 2.50 Kg
-Hệ điều hành: Windows 11 Home SL', 10000000, 15000000, 20);
+Hệ điều hành: Windows 11 Home SL', 10000000, 15000000, 20,30000000,'GG001','NCC001');
 
 
 
 --part2 mỗi danh mục 1 sản phẩm
-INSERT INTO SANPHAM (maSp, maDm, tenSp, hinhAnh, moTa, giaNhap, giaBan, soLuong)
+INSERT INTO SANPHAM (maSp, maDm, tenSp, hinhAnh, moTa, giaNhap, giaBan, soLuong ,giaChuaBan, maGiamGia, maNhaCungCap)
 VALUES 
 ('SP012', 'DM002', N'Màn hình LG UltraGear 27GS65F-B (27 inch/FHD/IPS/180Hz/1ms)', 'D:\DataC#\image\mh1.jpg', N'Kích thước: 27 inch
 Độ phân giải: FHD 1920 x 1080
@@ -170,27 +190,22 @@ Thời gian phản hồi: 1ms
 Độ sáng: 300 nits
 Tỉ lệ tương phản: 1000:1
 Tương thích ngàm VESA: 100 x 100mm
-Cổng kết nối: DisplayPort x1, HDMI x1, Audio 3.5mm', 4089000, 4389000, 15),
+Cổng kết nối: DisplayPort x1, HDMI x1, Audio 3.5mm', 4089000, 4389000, 15,30000000,'GG001','NCC001'),
 
-('SP013', 'DM003', N'PC HACOM AI ULTRA MAX ( CORE ULTRA 285K / VGA RTX 5090 AORUS MASTER / GAMING GEAR/ MONITOR OLED 45" CURVED 240 HZ )', 'D:\DataC#\image\pc1.jpg', N'CPU : Intel CORE ULTRA 285K
-MAIN : Z890
-RAM : 96GB ( 2x48) DDR5
-SSD : 4TB
-VGA: NVIDIA RTX 5090
-NGUỒN : 1600W
-Màn hình LG OLED 45GS95QE-B', 200000000, 249999999, 15),
+INSERT INTO SANPHAM (maSp, maDm, tenSp, hinhAnh, moTa, giaNhap, giaBan, soLuong ,giaChuaBan, maGiamGia, maNhaCungCap)
+VALUES 
 
 ('SP014', 'DM005', N'Chuột Logitech B100 Black (910-006605) (USB)', 'D:\DataC#\image\chuot1.jpg', N'Chuột Logitech B100
 Độ phân giải 800dpi
 Kết nối USB
 Thiết kế đối xứng, gọn nhẹ
-Phù hợp với nhu cầu văn phòng, giải trí nhẹ', 70000, 79000, 15),
+Phù hợp với nhu cầu văn phòng, giải trí nhẹ', 70000, 79000, 15,30000000,'GG001','NCC001'),
 
 ('SP015', 'DM006', N'Tai nghe không dây Logitech G535 Lightspeed wireless Black', 'D:\DataC#\image\tainghe1.jpg', N'Tai nghe không dây Logitech G535 Lightspeed
 Chuẩn kết nối: LightSpeed Wireless
 Thiết kế siêu nhẹ nặng chỉ 236g
 Driver 40mm cho âm thanh chi tiết
-Micro chất lượng cao được chứng nhận bởi Discord', 2499000, 2999000, 15),
+Micro chất lượng cao được chứng nhận bởi Discord', 2499000, 2999000, 15,30000000,'GG001','NCC001'),
 
 ('SP016', 'DM007', N'Microphone ASUS ROG Carnyx Black', 'D:\DataC#\image\mic1.jpg', N'Mang đến âm thanh thực sự phong phú và ấm áp
 Cung cấp âm thanh có độ phân giải cao, cực kỳ chi tiết
@@ -199,7 +214,7 @@ Giảm âm lượng giọng hát
 Giảm rung động bên ngoài để ghi âm mượt mà
 Điều khiển nhanh chóng, trực quan để ghi âm không bị gián đoạn
 Giúp điều chỉnh âm lượng micrô và điều khiển âm thanh của tai nghe giám sát một cách thuận tiện
-Tận hưởng khả năng cá nhân hóa và đồng bộ hóa chưa từng có với hệ sinh thái Aura Sync', 4999000, 5699000, 15),
+Tận hưởng khả năng cá nhân hóa và đồng bộ hóa chưa từng có với hệ sinh thái Aura Sync', 4999000, 5699000, 15,30000000,'GG001','NCC001'),
 
 ('SP017', 'DM004', N'Bàn phím Corsair K100 RGB Optical switch (OPX-RF) (CH-912A01A-NA)', 'D:\DataC#\image\phim1.jpg', N'Bàn phím Corsair K100 RGB
 Bàn phím cao cấp mới nhất đến từ Corsair
@@ -209,7 +224,7 @@ Trang bị núm xoay đa tác vụ cực kỳ tiện lợi
 Thiết kế khung kim loại cực kỳ chắc chắn
 Keycap PBT Doubleshot siêu bền
 Tích hợp 6 phím macro truy cập nhanh ứng dung của Elgato Stream Deck
-Đi kèm kê tay nam châm tiện lợi', 4899000, 6549000, 15),
+Đi kèm kê tay nam châm tiện lợi', 4899000, 6549000, 15,30000000,'GG001','NCC001'),
 
 ('SP018', 'DM008', N'Loa di động JBL CHARGE 5 - Màu xanh dương', 'D:\DataC#\image\loa1.jpg', N'Thời lượng pin: 20 giờ
 Thời gian sạc: 4 giờ
@@ -227,14 +242,14 @@ Cổng sạc vào: USB-A
 Pin: Sử dụng lên đến 20 giờ
 Dung lượng Pin: 7500mAh
 Chống nước: IP67
-Giao tiếp & kết nối: Bluetooth 5.1', 3699000, 3990000, 15),
+Giao tiếp & kết nối: Bluetooth 5.1', 3699000, 3990000, 15,30000000,'GG001','NCC001'),
 
 
 ('SP019', 'DM009', N'Webcam hội nghị truyền hình Logitech Meetup', 'D:\DataC#\image\web1.png', N'Camera hội nghị với tầm quan sát 120 độ và công nghệ quang học 4K
 Trường ngắm siêu rộng 120°
 3 micrô & loa tùy chỉnh
 Cảm biến hình ảnh Ultra HD 4K
-Thiết kế tất cả trong một', 10000000, 16399000, 15),
+Thiết kế tất cả trong một', 10000000, 16399000, 15,30000000,'GG001','NCC001'),
 
 
 ('SP020', 'DM010', N'Máy Chơi Game Sony Playstation 5 (PS5) Slim Console – 30th Anniversary Limited Edition', 'D:\DataC#\image\game1.jpg', N'Máy Chơi Game Sony Playstation 5 (PS5) Slim Console – 30th Anniversary Limited Edition
@@ -248,7 +263,7 @@ PlayStation 5 hỗ trợ độ phân giải 8K, người dùng có thể chơi g
 Phiên bản Digital không có ổ đĩa phù hợp với những người thích mua game qua cửa hàng trực tuyến của Sony
 Thiết kế có thể tháo rời ổ đĩa Blue-ray
 Có thể chơi được cả các game của hệ máy PS4
-*Lưu ý: Máy không kèm chân đế dựng máy như trong hình', 15999000, 16999000, 15),
+*Lưu ý: Máy không kèm chân đế dựng máy như trong hình', 15999000, 16999000, 15,30000000,'GG001','NCC001'),
 
 
 ('SP021', 'DM011', N'Fan Case Tản Nhiệt NZXT F120RGB Duo Black(Triple)', 'D:\DataC#\image\pk1.jpg', N'Anh sáng RGB rực rỡ từ mọi góc độ với 20 đèn LED có thể tùy chỉnh
@@ -258,7 +273,7 @@ Cao su ở các góc giảm tiếng ồn và rung khi ử dụng
 Có thể kết hợp sử dụng với quạt NZXT F120/F140 RGB
 Cá nhân hóa hiệu ứng ánh sáng RGB và điều chỉnh quạt thông qua NZXT CAM
 Kích thước 120mm
-Bộ sản phẩm gồm 3 quạt tản nhiệt', 2000000, 2599000, 15);
+Bộ sản phẩm gồm 3 quạt tản nhiệt', 2000000, 2599000, 15,30000000,'GG001','NCC001');
 
 
 

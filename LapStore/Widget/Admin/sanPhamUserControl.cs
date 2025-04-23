@@ -13,7 +13,7 @@ namespace LapStore.Widget
 {
     public partial class sanPhamUserControl : System.Windows.Forms.UserControl
     {
-        string MADANHMUC = "DM001";
+        string MADANHMUC = "";
         string imagePath;
 
         public sanPhamUserControl()
@@ -40,12 +40,12 @@ namespace LapStore.Widget
             txtMaDm.Text = MADANHMUC;
             LoadingData(MADANHMUC);
             // dgvSP.DefaultCellStyle.ForeColor = Color.Black;
-            txtMaDm.Enabled = false;
+            // txtMaDm.Enabled = false;
         }
 
         public void LoadingData(string maDm)
         {
-            List<SanPham> SanPhams = SanPhamController.getSanPhamByMaDm(maDm);
+            List<SanPham> SanPhams = SanPhamController.GetSanPham(maDm);
             dgvSP.Rows.Clear();
 
             foreach (SanPham sp in SanPhams)
@@ -76,7 +76,7 @@ namespace LapStore.Widget
                     sp.MoTa, // Mô tả
                     sp.GiaNhap, // Giá nhập
                     sp.GiaBan, // Giá bán
-                    sp.GiaThat, // Giá bán thật
+                    // sp.GiaChuaBan, // Giá bán thật
                     sp.SoLuong, // Số lượng
                     sp.GiamGia, // Giảm giá
                     sp.NhaCungCap, // Nhà cung cấp
@@ -275,7 +275,7 @@ namespace LapStore.Widget
                     sp.MoTa, // Mô tả
                     sp.GiaNhap, // Giá nhập
                     sp.GiaBan, // Giá bán
-                    sp.GiaThat, // Giá bán thật
+                    // sp.GiaChuaBan, // Giá bán thật
                     sp.SoLuong, // Số lượng
                     sp.GiamGia, // Giảm giá
                     sp.NhaCungCap, // Nhà cung cấp

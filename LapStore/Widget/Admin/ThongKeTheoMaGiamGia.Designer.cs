@@ -1,6 +1,6 @@
 ﻿namespace LapStore.Widget
 {
-    partial class doanhThuNhomHangUserControl
+    partial class ThongKeTheoMaGiamGia
     {
         /// <summary> 
         /// Required designer variable.
@@ -32,22 +32,55 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.label1 = new System.Windows.Forms.Label();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.cboGiamGia = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dgv = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.label4 = new System.Windows.Forms.Label();
-            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.cboDanhMuc = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.guna2GradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(106)))), ((int)(((byte)(38)))));
+            this.label1.Location = new System.Drawing.Point(253, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(477, 37);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Thống kê sản phẩm theo mã giảm giá";
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 20;
+            // 
+            // cboGiamGia
+            // 
+            this.cboGiamGia.BackColor = System.Drawing.Color.Transparent;
+            this.cboGiamGia.BorderRadius = 10;
+            this.cboGiamGia.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboGiamGia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGiamGia.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(138)))), ((int)(((byte)(121)))));
+            this.cboGiamGia.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboGiamGia.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboGiamGia.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboGiamGia.ForeColor = System.Drawing.Color.White;
+            this.cboGiamGia.ItemHeight = 30;
+            this.cboGiamGia.Location = new System.Drawing.Point(53, 96);
+            this.cboGiamGia.Name = "cboGiamGia";
+            this.cboGiamGia.Size = new System.Drawing.Size(288, 36);
+            this.cboGiamGia.TabIndex = 70;
+            this.cboGiamGia.SelectedIndexChanged += new System.EventHandler(this.cboGiamGia_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -55,11 +88,25 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(138)))), ((int)(((byte)(121)))));
-            this.label8.Location = new System.Drawing.Point(50, 111);
+            this.label8.Location = new System.Drawing.Point(50, 67);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(214, 17);
-            this.label8.TabIndex = 66;
-            this.label8.Text = "Chọn nhóm hàng muốn thống kê";
+            this.label8.Size = new System.Drawing.Size(224, 17);
+            this.label8.TabIndex = 69;
+            this.label8.Text = "Chọn loại giảm giá muốn thống kê";
+            // 
+            // guna2GradientPanel1
+            // 
+            this.guna2GradientPanel1.BorderRadius = 25;
+            this.guna2GradientPanel1.Controls.Add(this.label6);
+            this.guna2GradientPanel1.Controls.Add(this.label3);
+            this.guna2GradientPanel1.Controls.Add(this.label4);
+            this.guna2GradientPanel1.Controls.Add(this.dgv);
+            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(138)))), ((int)(((byte)(121)))));
+            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(138)))), ((int)(((byte)(121)))));
+            this.guna2GradientPanel1.Location = new System.Drawing.Point(37, 193);
+            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(897, 490);
+            this.guna2GradientPanel1.TabIndex = 68;
             // 
             // label6
             // 
@@ -85,16 +132,17 @@
             this.label3.TabIndex = 58;
             this.label3.Text = "TỔNG SỐ LƯỢNG:";
             // 
-            // label1
+            // label4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(106)))), ((int)(((byte)(38)))));
-            this.label1.Location = new System.Drawing.Point(236, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(476, 37);
-            this.label1.TabIndex = 63;
-            this.label1.Text = "Thống kê doanh thu theo nhóm hàng";
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(13, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(325, 17);
+            this.label4.TabIndex = 56;
+            this.label4.Text = "BẢNG THỐNG KÊ DOANH THU THEO NHÓM HÀNG";
             // 
             // dgv
             // 
@@ -154,55 +202,6 @@
             this.dgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.BorderRadius = 20;
-            this.guna2Elipse1.TargetControl = this.dgv;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(13, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(325, 17);
-            this.label4.TabIndex = 56;
-            this.label4.Text = "BẢNG THỐNG KÊ DOANH THU THEO NHÓM HÀNG";
-            // 
-            // guna2GradientPanel1
-            // 
-            this.guna2GradientPanel1.BorderRadius = 25;
-            this.guna2GradientPanel1.Controls.Add(this.label6);
-            this.guna2GradientPanel1.Controls.Add(this.label3);
-            this.guna2GradientPanel1.Controls.Add(this.label4);
-            this.guna2GradientPanel1.Controls.Add(this.dgv);
-            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(138)))), ((int)(((byte)(121)))));
-            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(138)))), ((int)(((byte)(121)))));
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(37, 237);
-            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(897, 490);
-            this.guna2GradientPanel1.TabIndex = 64;
-            // 
-            // cboDanhMuc
-            // 
-            this.cboDanhMuc.BackColor = System.Drawing.Color.Transparent;
-            this.cboDanhMuc.BorderRadius = 10;
-            this.cboDanhMuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboDanhMuc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDanhMuc.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(138)))), ((int)(((byte)(121)))));
-            this.cboDanhMuc.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboDanhMuc.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboDanhMuc.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboDanhMuc.ForeColor = System.Drawing.Color.White;
-            this.cboDanhMuc.ItemHeight = 30;
-            this.cboDanhMuc.Location = new System.Drawing.Point(53, 140);
-            this.cboDanhMuc.Name = "cboDanhMuc";
-            this.cboDanhMuc.Size = new System.Drawing.Size(288, 36);
-            this.cboDanhMuc.TabIndex = 67;
-            this.cboDanhMuc.SelectedIndexChanged += new System.EventHandler(this.cboDanhMuc_SelectedIndexChanged);
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "TT";
@@ -211,39 +210,39 @@
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "Mã Danh Mục";
+            this.Column6.HeaderText = "Mã Giảm Giá";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Tên Danh Mục";
+            this.Column2.HeaderText = "Tên Đợt Giảm Giá";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // Column5
             // 
-            this.Column5.HeaderText = "Tổng SL";
+            this.Column5.HeaderText = "Tổng SL Sản Phẩm";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
-            // doanhThuNhomHangUserControl
+            // ThongKeTheoMaGiamGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.cboDanhMuc);
+            this.Controls.Add(this.cboGiamGia);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2GradientPanel1);
+            this.Controls.Add(this.label1);
             this.MaximumSize = new System.Drawing.Size(970, 750);
             this.MinimumSize = new System.Drawing.Size(970, 750);
-            this.Name = "doanhThuNhomHangUserControl";
+            this.Name = "ThongKeTheoMaGiamGia";
             this.Size = new System.Drawing.Size(970, 750);
-            this.Load += new System.EventHandler(this.doanhThuNhomHangUserControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.Load += new System.EventHandler(this.ThongKeTheoMaGiamGia_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,15 +250,15 @@
 
         #endregion
 
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private Guna.UI2.WinForms.Guna2ComboBox cboGiamGia;
         private System.Windows.Forms.Label label8;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2DataGridView dgv;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private Guna.UI2.WinForms.Guna2ComboBox cboDanhMuc;
+        private Guna.UI2.WinForms.Guna2DataGridView dgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;

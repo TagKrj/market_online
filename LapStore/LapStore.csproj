@@ -123,7 +123,9 @@
     <Compile Include="Controller\NhaCungCapController.cs" />
     <Compile Include="Controller\SanPhamController.cs" />
     <Compile Include="Controller\ThongKeController.cs" />
+    <Compile Include="Controller\ThongKeTheoMaGiamGiaController.cs" />
     <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Controller\DoanhThuThoiGianController.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Model\ChiTietDonHang.cs" />
     <Compile Include="Model\DanhMuc.cs" />
@@ -133,7 +135,10 @@
     <Compile Include="Model\NhaCungCap.cs" />
     <Compile Include="Model\ThongKe.cs" />
     <Compile Include="Model\Models.cs" />
+    <Compile Include="Model\ThongKeDanhMuc.cs" />
+    <Compile Include="Model\ThongKeGiamGia.cs" />
     <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Model\DoanhThuTheoNgay.cs" />
     <Compile Include="View\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,11 +178,11 @@
     <Compile Include="Widget\Admin\donHangAdmin.Designer.cs">
       <DependentUpon>donHangAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Widget\Admin\khoHangUserControl.cs">
+    <Compile Include="Widget\Admin\ThongKeTheoMaGiamGia.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Widget\Admin\khoHangUserControl.Designer.cs">
-      <DependentUpon>khoHangUserControl.cs</DependentUpon>
+    <Compile Include="Widget\Admin\ThongKeTheoMaGiamGia.Designer.cs">
+      <DependentUpon>ThongKeTheoMaGiamGia.cs</DependentUpon>
     </Compile>
     <Compile Include="Widget\Admin\nhaCungCapUserControl.cs">
       <SubType>UserControl</SubType>
@@ -327,8 +332,8 @@
     <EmbeddedResource Include="Widget\Admin\donHangAdmin.resx">
       <DependentUpon>donHangAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Widget\Admin\khoHangUserControl.resx">
-      <DependentUpon>khoHangUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Widget\Admin\ThongKeTheoMaGiamGia.resx">
+      <DependentUpon>ThongKeTheoMaGiamGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Widget\Admin\nhaCungCapUserControl.resx">
       <DependentUpon>nhaCungCapUserControl.cs</DependentUpon>

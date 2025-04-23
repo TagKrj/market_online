@@ -89,7 +89,7 @@ namespace LapStore
 
         private void btn_KhoHang_Click(object sender, EventArgs e)
         {
-            khoHangUserControl uc = new khoHangUserControl();
+            ThongKeTheoMaGiamGia uc = new ThongKeTheoMaGiamGia();
             AddUserControl(uc);
         }
 

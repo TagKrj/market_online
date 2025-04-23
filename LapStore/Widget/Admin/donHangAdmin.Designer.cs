@@ -172,7 +172,7 @@
             // dgvDonHang
             // 
             this.dgvDonHang.AllowUserToAddRows = false;
-            this.dgvDonHang.AllowUserToOrderColumns = true;
+            this.dgvDonHang.AllowUserToDeleteRows = false;
             this.dgvDonHang.AllowUserToResizeColumns = false;
             this.dgvDonHang.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
