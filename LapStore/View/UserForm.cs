@@ -201,7 +201,7 @@ namespace LapStore.View
         private void btn_Laptop_Click(object sender, EventArgs e)
         {
             danhMuc uc = new danhMuc();
-            uc.SetDanhMuc("DM001","LapTop"); // Truyền mã danh mục
+            uc.SetDanhMuc("DM01", "Sữa"); // Truyền mã danh mục
 
             userHome userForm = this.FindForm() as userHome;
             if (userForm != null)
@@ -213,7 +213,7 @@ namespace LapStore.View
         private void btn_ManHinh_Click(object sender, EventArgs e)
         {
             danhMuc uc = new danhMuc();
-            uc.SetDanhMuc("DM002", "Màn hình"); // Truyền mã danh mục
+            uc.SetDanhMuc("DM02", "Bánh kẹo"); // Truyền mã danh mục
 
             userHome userForm = this.FindForm() as userHome;
             if (userForm != null)
@@ -225,7 +225,7 @@ namespace LapStore.View
         private void btn_PC_Click(object sender, EventArgs e)
         {
             danhMuc uc = new danhMuc();
-            uc.SetDanhMuc("DM003", "PC"); // Truyền mã danh mục
+            uc.SetDanhMuc("DM03", "Nước giải khát"); // Truyền mã danh mục
 
             userHome userForm = this.FindForm() as userHome;
             if (userForm != null)
@@ -237,7 +237,7 @@ namespace LapStore.View
         private void btn_phim_Click(object sender, EventArgs e)
         {
             danhMuc uc = new danhMuc();
-            uc.SetDanhMuc("DM004", "Bàn phím"); // Truyền mã danh mục
+            uc.SetDanhMuc("DM04", "Mỹ phẩm"); // Truyền mã danh mục
 
             userHome userForm = this.FindForm() as userHome;
             if (userForm != null)
@@ -249,7 +249,7 @@ namespace LapStore.View
         private void btn_chuot_Click(object sender, EventArgs e)
         {
             danhMuc uc = new danhMuc();
-            uc.SetDanhMuc("DM005", "Chuột máy tính"); // Truyền mã danh mục
+            uc.SetDanhMuc("DM05", "Gia vị"); // Truyền mã danh mục
 
             userHome userForm = this.FindForm() as userHome;
             if (userForm != null)
@@ -261,7 +261,7 @@ namespace LapStore.View
         private void btn_taiNghe_Click(object sender, EventArgs e)
         {
             danhMuc uc = new danhMuc();
-            uc.SetDanhMuc("DM006", "Tai nghe"); // Truyền mã danh mục
+            uc.SetDanhMuc("DM06", "Rau củ"); // Truyền mã danh mục
 
             userHome userForm = this.FindForm() as userHome;
             if (userForm != null)
@@ -273,7 +273,7 @@ namespace LapStore.View
         private void btn_mic_Click(object sender, EventArgs e)
         {
             danhMuc uc = new danhMuc();
-            uc.SetDanhMuc("DM007", "Microphone"); // Truyền mã danh mục
+            uc.SetDanhMuc("DM07", "Thịt cá"); // Truyền mã danh mục
 
             userHome userForm = this.FindForm() as userHome;
             if (userForm != null)
@@ -285,7 +285,7 @@ namespace LapStore.View
         private void btn_Loa_Click(object sender, EventArgs e)
         {
             danhMuc uc = new danhMuc();
-            uc.SetDanhMuc("DM008", "Loa"); // Truyền mã danh mục
+            uc.SetDanhMuc("DM08", "Đồ gia dụng"); // Truyền mã danh mục
 
             userHome userForm = this.FindForm() as userHome;
             if (userForm != null)
@@ -297,7 +297,7 @@ namespace LapStore.View
         private void btn_webCam_Click(object sender, EventArgs e)
         {
             danhMuc uc = new danhMuc();
-            uc.SetDanhMuc("DM009", "Webcam & Camera"); // Truyền mã danh mục
+            uc.SetDanhMuc("DM09", "Hóa phẩm"); // Truyền mã danh mục
 
             userHome userForm = this.FindForm() as userHome;
             if (userForm != null)
@@ -309,7 +309,7 @@ namespace LapStore.View
         private void btn_game_Click(object sender, EventArgs e)
         {
             danhMuc uc = new danhMuc();
-            uc.SetDanhMuc("DM010", "Máy chơi game"); // Truyền mã danh mục
+            uc.SetDanhMuc("DM10", "Đồ ăn nhanh"); // Truyền mã danh mục
 
             userHome userForm = this.FindForm() as userHome;
             if (userForm != null)
@@ -321,7 +321,7 @@ namespace LapStore.View
         private void btn_phuKien_Click(object sender, EventArgs e)
         {
             danhMuc uc = new danhMuc();
-            uc.SetDanhMuc("DM011", "Phụ kiện các loại"); // Truyền mã danh mục
+            uc.SetDanhMuc("DM011", "Thống kê"); // Truyền mã danh mục
 
             userHome userForm = this.FindForm() as userHome;
             if (userForm != null)

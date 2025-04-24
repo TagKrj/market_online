@@ -22,7 +22,7 @@ namespace LapStore.View
             txt_pass.UseSystemPasswordChar = true;
             txt_checkPass.UseSystemPasswordChar = true;
             txt_passDK.UseSystemPasswordChar = true;
-            txt_email.Text = "admin@gmail.com";
+            txt_email.Text = "user@gmail.com";
             txt_pass.Text = "123456";
 
         }

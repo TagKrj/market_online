@@ -20,7 +20,7 @@ namespace LapStore
             using (SqlConnection conn = Database.GetConnection())
             {
                 // Xây dựng điều kiện WHERE (nếu có mã danh mục)
-                string whereClause = string.IsNullOrEmpty(maDanhMuc) ? "" : "WHERE maDm = @maDanhMuc";
+                string whereClause = string.IsNullOrEmpty(maDanhMuc) ? "" : "WHERE maDm LIKE @maDanhMuc";
 
                 // Xây dựng chuỗi ORDER BY theo kiểu sắp xếp
                 string orderBy;
@@ -88,7 +88,7 @@ namespace LapStore
 
             using (SqlConnection conn = Database.GetConnection())
             {
-                string query = "SELECT * FROM SANPHAM WHERE maDm = @maDm";
+                string query = "SELECT * FROM SANPHAM WHERE maDm LIKE @maDm";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@maDm", "%" + maDm + "%");

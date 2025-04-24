@@ -3,8 +3,9 @@
 
 --Xóa data cũ đi create cái mới cho nhanh
 
-create database projectLap
-use projectLap
+create database projectLap1
+use projectLap1
+drop database projectLap
 --drop database projectLap
 CREATE TABLE USERS (
     id char(10) PRIMARY KEY,
@@ -61,14 +62,7 @@ CREATE TABLE GIOHANG (
     FOREIGN KEY (maUser) REFERENCES USERS(id),
     FOREIGN KEY (maSp) REFERENCES SANPHAM(maSp)
 );
-SELECT
-    dh.id AS idDonHang,
-    dh.created_at AS created_atDonHang,
-    u.hoTen AS hoTenUsers
-FROM
-    DONHANG dh
-INNER JOIN
-    USERS u ON dh.maUser = u.id
+
 -- Bảng DONHANG (Lưu thông tin đơn hàng)
 CREATE TABLE DONHANG (
     id CHAR(10) PRIMARY KEY,
@@ -105,32 +99,70 @@ CREATE TABLE THONGKE (
     FOREIGN KEY (maSp) REFERENCES SANPHAM(maSp)
 );
 
-INSERT INTO GIAMGIA(maGiamGia, tenGiamGia,soGiamGia)
-VALUES 
-    ('GG001', N'Sinh nhật cửa hàng', 5),
-    ('GG002', N'Xuân',10),
-    ('GG003', N'Hạ',15),
-	('GG004', N'Thu',20),
-    ('GG005', N'Đông',25);
-INSERT INTO NHACUNGCAP(maNhaCungCap, tenNhaCungCap,diaChi)
-VALUES 
-    ('NCC001', N'Bách Hóa Xanh', N'Thanh Hóa'),
-    ('NCC002', N'Hồng Hà',N'Quảng Ninh'),
-    ('NCC003', N'Vin', N'Hà Nội'),
-	('NCC004', N'Nhãn Lồng', N'Hưng Yên');
-INSERT INTO DANHMUC(id, tenDanhMuc)
-VALUES 
-    ('DM001', N'LapTop'),
-    ('DM002', N'Màn Hình'),
-    ('DM003', N'PC'),
-	('DM004', N'Phím'),
-    ('DM005', N'Chuột'),
-    ('DM006', N'Tai Nghe'),
-	('DM007', N'Microphone'),
-    ('DM008', N'Loa'),
-    ('DM009', N'Webcam'),
-	('DM010', N'Máy chơi game'),
-    ('DM011', N'Phụ Kiện');
+INSERT INTO GIAMGIA VALUES 
+
+('GG01', N'Khuyến mãi 10%', 10), 
+
+('GG02', N'Giảm giá Noel', 15), 
+
+('GG03', N'Tết giảm sốc', 20), 
+
+('GG04', N'Flash Sale', 25), 
+
+('GG05', N'Mua 1 tặng 1', 50), 
+
+('GG06', N'Back to school', 5), 
+
+('GG07', N'Sinh nhật thành viên', 30), 
+
+('GG08', N'Ngày hội mua sắm', 40), 
+
+('GG09', N'Giảm sốc cuối tuần', 35), 
+
+('GG10', N'Sale cuối tháng', 12);
+
+INSERT INTO DANHMUC VALUES 
+
+('DM01', N'Sữa'), 
+
+('DM02', N'Bánh kẹo'), 
+
+('DM03', N'Nước giải khát'), 
+
+('DM04', N'Mỹ phẩm'), 
+
+('DM05', N'Gia vị'), 
+
+('DM06', N'Rau củ'), 
+
+('DM07', N'Thịt cá'), 
+
+('DM08', N'Đồ gia dụng'), 
+
+('DM09', N'Hóa phẩm'), 
+
+('DM10', N'Đồ ăn nhanh'); 
+INSERT INTO NHACUNGCAP VALUES 
+
+('NCC01', N'Vinamilk', N'HCM'), 
+
+('NCC02', N'Orion', N'Hà Nội'), 
+
+('NCC03', N'CocaCola VN', N'HCM'), 
+
+('NCC04', N'Unilever', N'Hà Nội'), 
+
+('NCC05', N'Maggi', N'HCM'), 
+
+('NCC06', N'Vissan', N'HCM'), 
+
+('NCC07', N'Satra', N'Cần Thơ'), 
+
+('NCC08', N'Masan', N'Bình Dương'), 
+
+('NCC09', N'Tiki', N'Hà Nội'), 
+
+('NCC10', N'Lazada', N'HCM'); 
 --INSERT INTO SANPHAM (maSp, maDm, tenSp, hinhAnh, moTa, giaNhap, giaBan, soLuong)
 --VALUES 
 --('SP001', 'DM001', N'tenSp', 'D:\DataC#\image\anh_o_day', N'moTa', 20000000, 25000000, 15);

@@ -305,14 +305,14 @@
             this.btn_mic.ForeColor = System.Drawing.Color.DarkGray;
             this.btn_mic.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
             this.btn_mic.HoverState.ForeColor = System.Drawing.Color.Gray;
-            this.btn_mic.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            this.btn_mic.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             this.btn_mic.Image = ((System.Drawing.Image)(resources.GetObject("btn_mic.Image")));
             this.btn_mic.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_mic.Location = new System.Drawing.Point(15, 269);
             this.btn_mic.Name = "btn_mic";
             this.btn_mic.Size = new System.Drawing.Size(136, 29);
             this.btn_mic.TabIndex = 25;
-            this.btn_mic.Text = "Thể thao";
+            this.btn_mic.Text = "Thịt Cá";
             this.btn_mic.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_mic.Click += new System.EventHandler(this.btn_mic_Click);
             // 
@@ -331,14 +331,14 @@
             this.btn_game.ForeColor = System.Drawing.Color.DarkGray;
             this.btn_game.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
             this.btn_game.HoverState.ForeColor = System.Drawing.Color.Gray;
-            this.btn_game.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            this.btn_game.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
             this.btn_game.Image = ((System.Drawing.Image)(resources.GetObject("btn_game.Image")));
             this.btn_game.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_game.Location = new System.Drawing.Point(15, 395);
             this.btn_game.Name = "btn_game";
             this.btn_game.Size = new System.Drawing.Size(136, 29);
             this.btn_game.TabIndex = 24;
-            this.btn_game.Text = "Thuốc";
+            this.btn_game.Text = "Đồ Ăn Nhanh";
             this.btn_game.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_game.Click += new System.EventHandler(this.btn_game_Click);
             // 
@@ -357,14 +357,14 @@
             this.btn_webCam.ForeColor = System.Drawing.Color.DarkGray;
             this.btn_webCam.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
             this.btn_webCam.HoverState.ForeColor = System.Drawing.Color.Gray;
-            this.btn_webCam.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
+            this.btn_webCam.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
             this.btn_webCam.Image = ((System.Drawing.Image)(resources.GetObject("btn_webCam.Image")));
             this.btn_webCam.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_webCam.Location = new System.Drawing.Point(15, 353);
             this.btn_webCam.Name = "btn_webCam";
             this.btn_webCam.Size = new System.Drawing.Size(136, 29);
             this.btn_webCam.TabIndex = 23;
-            this.btn_webCam.Text = "Thú cưng";
+            this.btn_webCam.Text = "Hóa Phẩm";
             this.btn_webCam.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_webCam.Click += new System.EventHandler(this.btn_webCam_Click);
             // 
@@ -383,14 +383,14 @@
             this.btn_Loa.ForeColor = System.Drawing.Color.DarkGray;
             this.btn_Loa.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
             this.btn_Loa.HoverState.ForeColor = System.Drawing.Color.Gray;
-            this.btn_Loa.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image7")));
+            this.btn_Loa.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
             this.btn_Loa.Image = ((System.Drawing.Image)(resources.GetObject("btn_Loa.Image")));
             this.btn_Loa.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_Loa.Location = new System.Drawing.Point(15, 311);
             this.btn_Loa.Name = "btn_Loa";
             this.btn_Loa.Size = new System.Drawing.Size(136, 29);
             this.btn_Loa.TabIndex = 22;
-            this.btn_Loa.Text = "Sách";
+            this.btn_Loa.Text = "Đồ Gia Dụng";
             this.btn_Loa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_Loa.Click += new System.EventHandler(this.btn_Loa_Click);
             // 
@@ -409,14 +409,14 @@
             this.btn_phuKien.ForeColor = System.Drawing.Color.DarkGray;
             this.btn_phuKien.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
             this.btn_phuKien.HoverState.ForeColor = System.Drawing.Color.Gray;
-            this.btn_phuKien.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image8")));
+            this.btn_phuKien.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
             this.btn_phuKien.Image = ((System.Drawing.Image)(resources.GetObject("btn_phuKien.Image")));
             this.btn_phuKien.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_phuKien.Location = new System.Drawing.Point(15, 437);
             this.btn_phuKien.Name = "btn_phuKien";
             this.btn_phuKien.Size = new System.Drawing.Size(136, 29);
             this.btn_phuKien.TabIndex = 21;
-            this.btn_phuKien.Text = "Mẹ và bé";
+            this.btn_phuKien.Text = "Thống Kê";
             this.btn_phuKien.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_phuKien.Click += new System.EventHandler(this.btn_phuKien_Click);
             // 
@@ -435,14 +435,14 @@
             this.btn_taiNghe.ForeColor = System.Drawing.Color.DarkGray;
             this.btn_taiNghe.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
             this.btn_taiNghe.HoverState.ForeColor = System.Drawing.Color.Gray;
-            this.btn_taiNghe.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image9")));
+            this.btn_taiNghe.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
             this.btn_taiNghe.Image = ((System.Drawing.Image)(resources.GetObject("btn_taiNghe.Image")));
             this.btn_taiNghe.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_taiNghe.Location = new System.Drawing.Point(15, 227);
             this.btn_taiNghe.Name = "btn_taiNghe";
             this.btn_taiNghe.Size = new System.Drawing.Size(136, 29);
             this.btn_taiNghe.TabIndex = 20;
-            this.btn_taiNghe.Text = "Đồ chơi";
+            this.btn_taiNghe.Text = "Rau Củ";
             this.btn_taiNghe.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_taiNghe.Click += new System.EventHandler(this.btn_taiNghe_Click);
             // 
@@ -468,7 +468,7 @@
             this.btn_chuot.Name = "btn_chuot";
             this.btn_chuot.Size = new System.Drawing.Size(136, 29);
             this.btn_chuot.TabIndex = 16;
-            this.btn_chuot.Text = "Thực phẩm";
+            this.btn_chuot.Text = "Gia Vị";
             this.btn_chuot.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_chuot.Click += new System.EventHandler(this.btn_chuot_Click);
             // 
@@ -494,7 +494,7 @@
             this.btn_PC.Name = "btn_PC";
             this.btn_PC.Size = new System.Drawing.Size(136, 29);
             this.btn_PC.TabIndex = 19;
-            this.btn_PC.Text = "Gia dụng";
+            this.btn_PC.Text = "Nước Giải Khát";
             this.btn_PC.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_PC.Click += new System.EventHandler(this.btn_PC_Click);
             // 
@@ -546,7 +546,7 @@
             this.btn_ManHinh.Name = "btn_ManHinh";
             this.btn_ManHinh.Size = new System.Drawing.Size(136, 29);
             this.btn_ManHinh.TabIndex = 17;
-            this.btn_ManHinh.Text = "Điện Tử";
+            this.btn_ManHinh.Text = "Bánh Kẹo";
             this.btn_ManHinh.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_ManHinh.Click += new System.EventHandler(this.btn_ManHinh_Click);
             // 
@@ -572,7 +572,7 @@
             this.btn_Laptop.Name = "btn_Laptop";
             this.btn_Laptop.Size = new System.Drawing.Size(136, 29);
             this.btn_Laptop.TabIndex = 15;
-            this.btn_Laptop.Text = "Thời trang";
+            this.btn_Laptop.Text = "Sữa";
             this.btn_Laptop.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_Laptop.TextFormatNoPrefix = true;
             this.btn_Laptop.Click += new System.EventHandler(this.btn_Laptop_Click);

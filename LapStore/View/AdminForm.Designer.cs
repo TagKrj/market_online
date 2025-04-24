@@ -214,7 +214,7 @@
             this.btn_KhuyenMai.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.btn_KhuyenMai.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
             this.btn_KhuyenMai.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
-            this.btn_KhuyenMai.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.btn_KhuyenMai.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
             this.btn_KhuyenMai.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_KhuyenMai.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_KhuyenMai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -441,7 +441,7 @@
             this.btn_SanPham.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.btn_SanPham.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
             this.btn_SanPham.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(145)))), ((int)(((byte)(109)))));
-            this.btn_SanPham.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.btn_SanPham.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image11")));
             this.btn_SanPham.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_SanPham.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_SanPham.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
